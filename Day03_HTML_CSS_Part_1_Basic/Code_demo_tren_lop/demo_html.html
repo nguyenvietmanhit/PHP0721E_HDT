@@ -1,0 +1,229 @@
+<!-- demo_html.html -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf8" />
+		<title>Demo HTML ngày 2</title>
+	</head>
+	<body>
+		<!-- Thẻ cấu trúc bảng: table, tr, td th - tạo 1 bảng, thẻ đầy đủ 
+		tr - table row
+		td - table data
+		th - table heading: căn giữa và bôi đậm
+		-->
+		&nbsp;&nbsp;&nbsp;abc
+		                   dsadsa
+		<table border="1" cellspacing="0" cellpadding="8">
+			<tr>
+				<th>Tiêu đề 1</th>
+				<th>Tiêu đề 2</th>
+				<th>Tiêu đề 3</th>
+				<th>Tiêu đề 4</th>
+			</tr>
+			<tr>
+				<td>Hàng 1 cột 1</td>
+				<td>Hàng 1 cột 2</td>
+				<td>Hàng 1 cột 3</td>
+				<td>Hàng 1 cột 4</td>
+			</tr>
+			<tr>
+				<td>Hàng 2 cột 1</td>
+				<td>Hàng 2 cột 2</td>
+				<td>Hàng 2 cột 3</td>
+				<td>Hàng 2 cột 4</td>
+			</tr>
+		</table>
+
+<hr />
+		<!-- Thuộc tính colspan và rowspan
+		+ colspan: gộp cột với nhau, áp dụng cho td
+		colspan=3 -> cột có width = 3 cột
+		+ rowspan: gộp hàng với nhau, áp dụng cho td 
+		 -->
+		<table border="1" cellspacing="0" cellpadding="8">
+			<tr>
+				<td colspan="3">Hàng 1 cột 1</td>
+				<td>Hàng 1 cột 2</td>
+				<!-- <td>Hàng 1 cột 3</td>
+				<td>Hàng 1 cột 4</td> -->
+			</tr>
+			<tr>
+				<!-- rowspan gộp 2 hàng, cần phải bỏ đi hàng bị ảnh hưởng -->
+				<td rowspan="3">Hàng 2 cột 1</td>
+				<td>Hàng 2 cột 2</td>
+				<td>Hàng 2 cột 3</td>
+				<td>Hàng 2 cột 4</td>
+			</tr>
+			<tr>
+				<!-- <td>Hàng 3 cột 1</td> -->
+				<td>Hàng 3 cột 2</td>
+				<td>Hàng 3 cột 3</td>
+				<td>Hàng 3 cột 4</td>
+			</tr>
+			<tr>
+				<!-- <td>Hàng 3 cột 1</td> -->
+				<td>Hàng 3 cột 2</td>
+				<td>Hàng 3 cột 3</td>
+				<td>Hàng 3 cột 4</td>
+			</tr>
+		</table>
+
+		<hr />
+		<!-- 
+		Thẻ danh sách: ol, ul, li
+		Luôn có cặp: ol li, ul li
+		ol: order list: ds có thứ tự:1,2,3
+		ul: unorder list: ds ko có thứ tự 
+		li: list
+		 -->
+		 <ol>
+		 	<li>Thẻ li thứ nhất</li>
+		 	<li>Thẻ li thứ 2</li>
+		 	<li>Thẻ li thứ 3</li>
+		 </ol>	
+		 <!-- type=square / disc / circle 
+			htmlspecial char in html
+		 -->
+		 <ul style="list-style: none">
+		 	<li>&hearts; Thẻ li thứ nhất</li>
+		 	<li>&hearts; Thẻ li thứ 2</li>
+		 	<li>&hearts; Thẻ li thứ 3</li>
+		 </ul>
+
+		 <!-- Link: a - anchor: hiển thị link, đầy đủ -->
+		 <a href="www.google.vn" target="_blank">
+		 	Click để tới trang Google
+		 </a>
+
+		 <!-- Đường dẫn tương đối,
+		 cần tạo thư mục abc ngang hàng với file 
+		 demo_html.html hiện tại
+			
+		  -->
+		 <a href="abc/a.html">
+		 	Click để tới file a.html
+		 </a>
+
+		 <!-- Form: chứa ô nhập liệu để nhập thông tin và gửi thông tin đi: 
+		 	form, input, textarea, select, option 
+		 	- Bất cứ khi nào có 1 dạng nhập dữ liệu thì bắt buộc phải tạo <form> để bao lấy các input
+		 		-> nếu ko có thẻ <form> bao ngoài, thì ko thể gửi đc thông tin đi -> submit form
+		 	- Về mặt hiển thị, có thẻ <form> hay ko ko quan trọng, tuy nhiên về mặt chức năng thì như trên đã giải thích
+		 	- Thuộc tính của thẻ form:
+		 	+ action: url/file bắt dữ liệu từ form gửi lên
+		 	+ method: phương thức truyền dữ liệu:post/get		
+		 -->
+		 <form action="" method="post">
+		 	Nhập tên của bạn:
+		 	<input type="text" name="abc" />
+
+		 	<!-- 1 form ko thể thiếu nút submit form/gửi thông của form lên server -->
+		 	<input type="submit" value="Gửi thông tin" />
+		 </form>
+		 <!-- Khi submit form, trang sẽ bị tải lại -->
+
+		 <!-- Demo 1 form với đầy đủ các input thông dụng -->
+		 <form action="" method="post">
+		 	Nhập username:
+		 	<!-- + Thuộc tính name: dùng để server nhận biết dữ liệu đến từ input nào -> lập trình -->
+		 	<!-- + Value: hiển thị giá trị mặc định cho input -->
+		 	<input 
+		 	type="text" 
+		 	name="username" 
+		 	value="username mặc định"
+		 	/>
+		 	<br />
+
+		 	Nhập tuổi:
+		 	<!-- + Placeholder: hiển thị text gợi ý -->
+		 	<input type="number" name="age" placeholder="Nhập tuổi của bạn" />
+		 	<br />
+
+		 	Nhập mật khẩu:
+		 	<input type="password" />
+		 	<br />
+
+		 	Chọn nghề nghiệp:
+		 	<!-- Checked: tích sẵn -->
+		 	<input type="checkbox" value="1" checked /> Dev
+		 	<input type="checkbox" value="2" /> Tester
+		 	<input type="checkbox" value="3" /> BA
+		 	<input type="checkbox" value="4" /> PM
+		 	<br />
+
+		 	Chọn giới tính:
+		 	<!-- Với radio bắt buộc phải set name cho các radio trùng nhau thì chức năng radio mới hoạt động đúng -->
+		 	<!-- checked: tích sẵn -->
+		 	<input type="radio" name="gender" value="1"
+		 	 checked /> Nam
+		 	<input type="radio" name="gender" value="2" /> Nữ
+		 	<input type="radio" name="gender" value="3" /> Khác
+		 	<br />
+
+		 	Chọn 1 quốc gia: select - option
+		 	<select>
+		 		<option value="1">VN</option>
+		 		<option value="2">Korea</option>
+		 		<option value="3">Japan</option>
+		 	</select>
+		 	Chọn nhiều quốc gia: 
+		 	<select multiple>
+		 		<option value="1">VN</option>
+		 		<option value="2">Korea</option>
+		 		<option value="3">Japan</option>
+		 	</select>
+		 	<br />
+		 	Chọn 1 file tại 1 thời điểm: 
+		 	<input type="file" />
+		 	Chọn nhiều file tại 1 thời điểm:
+		 	<input type="file" multiple />
+		 	<br />
+		 	<!-- Textarea hiểu đc khoảng cách trong nội dung của nó -> ko để dấu cách trong thẻ -->
+		 	Nhập liệu trên nhiều dòng:
+		 	<textarea rows="15" cols="10" placeholder="Nhập trên nhiều dòng"></textarea>
+
+		 	<!-- Nút submit form/ Gửi thông tin đi, nút ko thể thiếu trong form -->
+		 	<!-- Form có 2 cách để gửi thông tin đi:
+		 	+ Click trực tiếp vào nút submit
+		 	+ Đứng trong 1 input và enter  -->
+		 	<input type="submit" value="Send info" />
+		 	<!-- <button type="submit">Click để submit</button> -->
+		 	<!-- Nút reset form: reset form về trạng thái ban đầu của form -->
+		 	<input type="reset" value="Reset form" />
+		 </form>
+
+		 <!-- Button: tạo ra các nút có thể click, có thể chứa text hoặc ảnh / khác với input -->
+		 <button>Đây là 1 button</button>
+		 <!-- Label: hiển thị 1 nhãn, luôn đi kèm với input để tạo 1 hiệu ứng: click vào label tự nhảy vào input tương ứng -->
+		 <form action="" method="post">
+		 	<!-- For của label phải trùng id trong input, thì mới tạo đc hiệu ứng -->
+		 	<label for="abc">Username</label>
+		 	<br />
+		 	<br />
+		 	<input type="text" id="abc" />
+		 </form>
+		 <!-- Thẻ center: căn giữa text bên trong -> chỉ dùng khi học HTML, bị bỏ đi khi học CSS -->
+		 <center>Nội dung bị căn giữa</center>
+		 <!-- Thẻ fieldset, legend: dùng tạo form về mặt trang trí -->
+		 <form action="" method="get">
+		 	<fieldset>
+		 		<legend>Tên của bạn</legend>
+		 		<input type="text" value="abc" />
+		 	</fieldset>
+		 </form>
+		 <!-- Thẻ iframe: cho phép nhúng trang web khác vào file hiện tại dưới dạng cửa số/iframe -->
+		 <!-- <iframe src="https://vnexpress.net" width="100%" height="600px"></iframe> -->
+		 <!-- Giới thiệu 1 số thẻ của phiên bản HTML5:
+		<section>, <article>, <header>, <footer> , <nav>, <aside> ..
+			mang tính ngữ nghĩa để thể hiện cho các khối trên trang
+		  -->
+		  <!-- HTML4 -->
+		  <div id="header">Đây là header</div>
+		  <div id="footer">Đây là footer</div>
+		  <!-- HTML5 -->
+		  <header>Đây là header</header>
+		  <footer>Đây là footer</footer>
+		  <!-- Tìm hiểu thêm các thuộc tính của HTML5 trong input của form:
+		  required, readonly, min, max ... -->
+	</body>
+</html>
