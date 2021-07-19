@@ -1,0 +1,59 @@
+<!-- css_basic.html -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>CSS cơ bản phần 1</title>
+	<!--  -->
+</head>
+<body>
+	<style type="text/css">
+		/* Các thuộc tính CSS cơ bản */
+		/* 1 / Background: màu nền của selector*/
+		/*copy ảnh ngang hàng file .html hiện tại*/
+		.p-bg {
+		    /*background-color: pink;
+		    background-image: url(img2.png);
+		    background-repeat: no-repeat;
+		    background-position: center;*/
+		    height: 160px;
+		    /*Cú pháp viết gộp của background*/
+		    /*nên ưu tiên viết gộp nếu có*/
+		    background: pink url(img2.png) no-repeat center;
+		}
+		/*Thực tế ko code CSS theo kiểu sửa -> SAve -> chạy trình duyệt -> mất time
+		Sử dụng công cụ của trình duyệt -> Inspect HTML
+		-> Chuột phải vào file đang chạy trên trình duyệt
+		-> Inspect HTML/Kiểm tra (Chrome)
+		2/ Font: nét chữ: dùng Inspect HTML để tạo selector tự động
+		*/
+		#span-font {
+		    font-size: 30px;
+		    font-weight: bold;
+		    font-style: italic;
+		    /*Xác định font-family: dựa vào font có sẵn trên máy tính của bạn: C:/Window/Fonts*/
+		    font-family: Arial;
+		}
+		/*3 / Text*/
+		#h1-text {
+    		color: #14681a;
+    		text-align: center;
+    		text-decoration: underline;
+    		text-transform: uppercase;
+    		text-shadow: 3px 3px 8px red;
+		}
+	</style>
+
+	<h1 id="h1-text">
+		H1 với CSS text
+	</h1>
+
+
+	<span id="span-font">
+		Thẻ span css font
+	</span>
+
+
+	<p class="p-bg">Thẻ p css background</p>
+</body>
+</html>

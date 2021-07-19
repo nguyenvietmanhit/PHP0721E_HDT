@@ -1,0 +1,173 @@
+<!-- demo_css.html -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Demo ngôn ngữ CSS</title>
+	<!-- Nhúng file .css tại đây,  sử dụng đường dẫn tương đối -->
+	<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+	<!-- 
+	1/Ngôn ngữ CSS:
+	- Cascading Style Sheets
+	- VD: 
+	xây dựng phần thô nhà -> HTML
+	trang trí ngôi nhà: sơn, trát ... -> CSS
+	lắp chuông cửa cho ngôi nhà, khi có khách đến, họ 
+	nhấn/click chuông thì ngôi nhà phản ứng lại -> Javascript
+	- CSS trang trí cho HTML -> web đẹp hơn -> code CSS bắt buộc
+	phải đc viết trong file HTML
+	- CSS học: cơ bản + dựng layout/bố cục trang
+	- Website hiện này đều cần phải responsive -> trang web hiển thị tương thích với mọi thiết bị: PC/Laptop, Ipad/Tablet, Mobile
+	-> thư viện Bootstrap để thiết kế website responsive
+	2/ Cú pháp khai báo CSS
+
+	selector: { 
+		property: value
+	}
+	- selector: phần tử/ đối tượng HTML sẽ bị chịu tác động bởi CSS: các thẻ: p, a ..., CSS có rất nhiều dạng selector
+	- property: thuộc tính CSS: color, background ...
+	- value: giá trị tương ứng của property, với property = color,
+	value = red, pink, blank ...
+	3/ Ví dụ về code CSS
+	 -->
+
+	 <style type="text/css">
+	 	/*h1 {
+	 		color: red;
+	 		font-size: 14px;
+	 	}*/
+	 </style>
+	 <h1>Thẻ h1</h1>
+	 
+	 <style type="text/css">
+	 	/*4 Các Selector cơ bản hay gặp: */
+	 	/* + Selector theo tên thẻ: tác động đến toàn bộ thẻ trên trang */
+	 	p {
+	 		font-size: 30px;
+	 		background: red;
+	 	}
+	 	/* + Selector theo thuộc tính Id và Class của thẻ: */
+	 	/*Selector theo id: #<giá-trị-id>*, identifier, trên 1 trang chỉ nên tồn tại 1 id duy nhất */
+	 	#link-1 {
+	 		background: blue;
+	 	}
+	 	/*Selector theo class: .<giá-trị-class>*, dùng cho nhiều nơi chung css */
+	 	.link-2 {
+	 		background: red;
+	 	}
+
+	 	.u1 {
+	 		color: red;
+	 	}
+	 	/*+ Selector theo cấp: dùng ký tự dấu cách để thể hiểnj cho selector theo cấp: ngoài ký tự phân cấp là dấu cách, còn có các ký tự khác:  > + ~; */
+	 	#div-1 span {
+	 		color: red;
+	 	}
+
+	 	/*+ Selector theo thuộc tính thẻ */
+	 	/* tên-thẻ[thuộc-tính=giá-trị] { code-css } */
+	 	input[type=text] {
+	 		background: red;
+	 	}
+	 	input[type=number] {
+	 		background: blue;
+	 	}
+	 	input[type=password] {
+	 		background: pink;
+	 	}
+	 	/*+ Selector theo trạng thái: */
+	 	#h2-hover:hover {
+	 		color: green;
+	 	}
+	 	/*Trạng thái theo vị trí: đầu tiên, thứ n, cuối cùng*/
+	 	ul li:first-child {
+	 		background: red;
+	 	}
+
+	 	ul li:last-child {
+	 		background: red;
+	 	}
+	 	/*number-th, 1th, 2th*/
+	 	ul li:nth-child(2) {
+	 		background: yellow;
+	 	}
+	 	ul li:nth-child(3) {
+	 		background: black;
+	 	}
+	 	/*Với selector trạng thái theo vị trí: chỉ áp dụng đc trong cấu trúc cha-con trực tiếp*/
+
+	 	/*5 Nhúng file CSS
+		+ Nhúng CSS trực tiếp trong thẻ HTML: inline,
+		độ ưu tiên cao nhất trong cả 3 cách, rối, ko có tính sử
+		dụng lại -> hạn chế dùng
+		+ Nhúng CSS trực tiếp trong thẻ file HTML dùng cặp thẻ
+		<style>: tách biệt code CSS ra khỏi HTML, ko có tính sử dụng lại trên hệ thống
+		+ Nhúng từ file bên ngoài có đuôi file là .css 
+		Tạo cấu trúc thư mục sau:
+		css   :ngang hàng với file demo_css.html;
+		   /style.css
+		   - Cần nhúng file .css vào file .html, sử dụng thẻ <link>
+		   trong thẻ <head>
+		   - Cách nhúng này ưu tiên sử dụng
+	 	*/
+	 </style>
+
+	 <h3 style="color:red;font-size: 50px">
+	    Thẻ h3 nhúng css inline
+	 </h3>
+
+
+
+
+
+
+	 <div>
+	 	<div>Div 1 con</div>
+	 	<div>Div 2 con</div>
+	 	<div>
+	 		<div>Div 3 cháu</div>
+	 	</div>
+	 </div>
+	 <ul>
+	 	<li>Thẻ li thứ nhất</li>
+	 	<li>Thẻ li thứ 2</li>
+	 	<li>Thẻ li thứ 3</li>
+	 	<li>Thẻ li thứ 4</li>
+	 	<li>Thẻ li cuối cùng</li>
+	 </ul>
+
+
+	 <h2 id="h2-hover">Rê chuột qua thẻ này để đổi màu text</h2>
+
+
+	 <form action="" method="post">
+	 	<input type="text" value="nvmanh" />
+	 	<input type="number" value="123" />
+	 	<input type="password" />
+	 </form>
+
+
+	 <div id="div-1">
+	 	<span>Thẻ span con 1 của div</span>
+	 	<span>Thẻ span con 2 của div</span>
+	 </div>
+	 <span>Thẻ span bên ngoài div</span>
+
+	 <!-- <a href="#" id="link-1">Thẻ a...</a> -->
+	 <a href="#" id="link-1">Thẻ a1</a>
+	 <!-- <a href="#" id="link-1">Thẻ a11111</a> -->
+	 <a href="#" class="link-2">Thẻ a2</a>
+	 <a href="#" class="link-2">Thẻ a3</a>
+	 <a href="#" class="link-2">Thẻ a4</a>
+	 <u class="u1 u2 u3 u4">Thẻ u1</u>
+	 <b id="b1-id" class="b1-class">Thẻ b1</b>
+
+
+	 <p>Đây là thẻ p1</p>
+	 <p>Đây là thẻ p2</p>
+	 <p>Đây là thẻ p3</p>
+
+</body>
+</html>
