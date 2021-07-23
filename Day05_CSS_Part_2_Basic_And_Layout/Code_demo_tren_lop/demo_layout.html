@@ -1,0 +1,32 @@
+<!-- demo_layout.html -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Demo layout</title>
+</head>
+<body>
+	<style type="text/css">
+		/*1 - Thành phần inline và block của thẻ HTML*/
+		/*Các thẻ HTML đều có kiểu hiển thị mặc định ban đầu:
+		+ inline: các phần tử đứng chung hàng được
+		+ block: không thể đứng chung hàng
+		Cách xác định phần tử là inline hay block: đặt text bất kỳ ngay phía sau khai báo thẻ đó -> nếu text ko bị xuống hàng mới -> inline, ngược lại -> block hoặc set background để nhìn width cho tiện
+		Block: p, h, div, ol, ul;
+		Inline: b i u a span ;
+		Có chuyển đối đc kiểu hiển thị mặc định hay ko ? được -> css display
+		*/
+		#div-1 {
+		    display: inline;
+		}
+	</style>
+	<div id="div-1">Div 1</div> text div 1
+
+	<h1>Thẻ h1</h1> text test
+	<span>Thẻ span</span> text test 2
+
+
+	<div>div 1</div><div>Div 2</div><div>Div 3</div>
+	<a href="#">a1</a><a href="#">a2</a><a href="#">a3</a>
+</body>
+</html>
