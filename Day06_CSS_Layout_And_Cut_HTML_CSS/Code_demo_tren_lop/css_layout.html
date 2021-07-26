@@ -1,0 +1,114 @@
+<!-- css_layout.html -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Demo CSS Layout</title>
+</head>
+<body>
+	<style type="text/css">
+		/* 
+		Layout của web là gì?
+		- Là bố cục của trang web, chia tùy thuộc con mắt người code: 
+		header: chứa thông tin trang, menu ...;
+		navigation: thanh menu;
+		main-content: nội dung chính;
+		footer: chân trang: bản quyền ...;
+		- Các bố cục trên trang có rất nhiều thể hiện: 1 hàng 1 cột, 1 hàng 2 cột, 1 hàng 3 cột, 1 hàng 4 cột -> cần sử dụng css liên quan đến layout để chia hàng cột
+		- Để dựng layout theo kiểu hàng/cột có 4 css chính sau:
+		float: left/right -> có thể sử dụng, cần fix trường hợp bị vỡ layout -> ko sử dụng 
+		display: flex -> ưu tiên dùng vì sự đơn giản
+		display: grid -> bỏ qua -> ko hỗ trợ IE
+		table -> bỏ -> ko linh hoạt khi responsive
+		1/ Dựng layout với float: nổi -> position
+		- Phần tử bị float nổi lên trên, mất hết width, phần tử ngay phía sau sẽ nhảy lên chiếm vị trí mà float để lại
+		float:left -> phần tử bị float sẽ hút về bên trái
+		float:right -> phần tử bị float sẽ hút về bên phải
+		- Cách chia layout với float:
+		+ Layout chia theo 1 hàng và bao nhiêu cột
+		+ Set float:left cho tất cả cột;
+		+ Xét width tường minh cho từng cột
+		*/
+		#div-1 {
+			background: red;
+		    float: left;
+		    width: 30%;
+		}
+		#div-2 {
+			background: yellow;
+		    float: left;
+			width: 70%;
+		}
+
+		#row-1 {
+			border: 1px solid red;
+		}
+		#col-1 {
+			background: blue;
+		}
+		#col-2 {
+			background: green;
+		}
+		.clearfix {
+			clear: both;
+		}
+
+		/*2 - Dựng layout theo cơ chế flex
+		- Áp dụng display: flex cho thành phần cha đang bao lấy các cột bên trong nó
+		- Flex mặc định luôn luôn giữ các cột bên trong của nó nằm trên 1 hàng, ko qtrong tổng width của các cột > 100% -> ko bị vỡ giao diện như float
+		- Sau khi set flex, set width tương ứng cho cột bên trong
+		*/
+		.row-flex {
+			border: 2px solid yellow;
+			display: flex;
+		}
+		.column1 {
+			background: pink;
+			width: 50%;
+		}
+		.column2 {
+			background: orange;
+			width: 50%;
+		}
+		/*Nghỉ giải lao 20p -> 20h15*/
+	</style>
+	<div class="row-flex">
+		<div class="column1">Hàng 1 cột 1</div>
+		<div class="column2">Hàng 1 cột 2</div>
+	</div>
+
+	
+
+	<!-- <form>
+		<table>
+			<tr>
+				<td>Username</td>
+				<td>
+					<input type="text" />
+				</td>
+			</tr>
+			<tr>
+				<td>Name</td>
+				<td>
+					<input type="text" />
+				</td>
+			</tr>
+		</table>
+	</form> -->
+
+
+
+	<div id="row-1">
+		<div id="col-1">Hàng 1 cột 1</div>
+		<div id="col-2">Hàng 1 cột 2</div>
+	</div>
+
+	<!-- Để fix bị vỡ giao diện khi dùng float, cần can thiệp HTML vào vị trí ngay sau phần tử bị float -->
+	<div class="clearfix"></div>
+
+	<div id="div-1">Div 1</div>
+	<div id="div-2">Div 2</div>
+	<!-- ds -->
+
+</body>
+</html>

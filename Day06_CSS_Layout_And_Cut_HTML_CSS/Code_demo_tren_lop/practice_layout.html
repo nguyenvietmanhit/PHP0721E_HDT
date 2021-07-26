@@ -1,0 +1,97 @@
+<!-- practice_layout.html -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Thực hành dựng layout</title>
+	<!-- Nhúng file css từ bên ngoài -->
+	<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+	<h1>BT6</h1>
+	<!-- 
+	Các bước cơ bản dựng layout của web
+	- Chia trang thành các thành phần/bố cục theo ý bạn:header, main, footer...
+	- Code HTML trước: dùng các thẻ div để tạo khối, sử dụng class cho từng thẻ div tạo ra
+	Trong quá trình dựng HTML, nếu phát hiện ra thành phần nào có cấu trúc layout từ 2 cột trở lên -> áp dụng cơ chế riêng để tạo HTML
+	- Code CSS: đi từ HTML -> trên xuống dưới
+	 -->
+	<div class="container">
+		<!-- HEADER -->
+		<div class="header">
+			<h1 class="heading">Websites</h1>
+		</div>
+		<!-- END HEADER -->
+
+		<!-- MAIN CONTENT -->
+		<div class="main-content">
+			<!-- Do thành phần có cấu trúc layout: 1 hàng 2 cột, sử dụng cấu trúc HTML dạng sau -->
+			<div class="row">
+				<div class="links">
+					<ul>
+						<li>
+							<a href="#">Link 1</a>
+						</li>
+						<li>
+							<a href="#">Link 2</a>
+						</li>
+						<li>
+							<a href="#">Link 3</a>
+						</li>
+					</ul>
+				</div>
+				<div class="content">
+					<p class="text-name">
+						<b>nvmanh.vn</b>
+					</p>
+					<div class="description">
+						Hello nvmanh abc
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END MAIN CONTENT -->
+
+		<!-- FOOTER -->
+		<div class="footer">
+			Footer
+		</div>
+		<!-- END FOOTER -->
+	</div> 
+
+	<h1>BT3</h1>
+	<div class="container">
+
+		<div class="row">
+			<div class="col">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			</div>
+			<div class="col">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			</div>
+			<div class="col">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			</div>
+			<div class="col">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			</div>
+			<div class="col">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			</div>
+		</div>
+	</div>
+
+	</body>
+</html>
