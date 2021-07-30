@@ -1,0 +1,58 @@
+/*File: style.css, ngang hàng/cùng cấp với file .html*/
+.container {
+    /* background: red; */
+    width: 50%;
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    margin: 0 auto;
+}
+
+.header {
+    background: #666;
+    text-align: center;
+    color: #fff;
+    padding: 20px;
+    /* height: 83px; */
+    font-family: Arial;
+}
+
+.row {
+    display: flex;
+}
+
+.links {
+    width: 33.33%;
+    background: #CCC;
+    height: 150px;
+}
+
+.content {
+	width: 66.67%;
+	height: 150px;
+	padding: 0 20px;
+	background: #F1F1F1;
+}
+
+.links ul {
+	list-style: none;
+	padding-left: 20px;
+}
+
+.footer {
+    background: #777;
+    text-align: center;
+    padding: 10px 0;
+    color: #fff;
+    font-size: 12px;
+}
+
+.heading {
+    margin: 0;
+}
+
+.col {
+    padding: 0 15px;
+    width: 33.33%;
+    text-align: justify;
+    margin-bottom: 25px;
+}
