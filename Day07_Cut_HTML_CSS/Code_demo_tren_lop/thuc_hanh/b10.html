@@ -1,0 +1,156 @@
+<!-- b10.html -->
+<!-- 
+thuc_hanh
+		/css
+		    /style.css
+		b10.html 
+		-->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Chữa bài 10 của ngày 6</title>
+	<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+	<!-- 
+	Chia để trị -> chia làm các thành phần to: header, main, footer
+	-> bóc tách từng thành phần, nếu có cấu trúc layout/hàng-cột -> dựng sẵn HTML
+	 -->
+	 <div class="container">
+	 	<!-- HEADER -->
+	 	<div class="header">
+	 		<div class="logo">
+	 			<h1 class="project-name">Project name</h1>
+	 		</div>
+	 		<div class="menu">
+	 			<!-- Có cấu trúc layout -->
+	 			<div class="row">
+	 				<div class="links">
+	 					<ul class="ul-link">
+	 						<li>
+	 							<a href="#" class="active">Active</a>
+	 							<!-- 
+									Khi hover vào menu Active, show menu con tương ứng lên
+	 								Thêm sẵn HTML cho menu con tương ứng, mặc định sẽ css cho ẩn đi -->
+	 							<div class="child-menu hide">
+	 								<a href="#">Menu con 1</a>
+	 								<a href="#">Menu con 2</a>
+	 								<a href="#">Menu con 3</a>
+	 							</div>
+		 					</li>
+	 						<!-- 20h:15 tiếp tục -->
+
+	 						<li><a href="#">Link</a></li>
+	 						<li><a href="#">Link</a></li>
+	 						<li><a href="#">Link</a></li>
+	 						<li><a href="#">Link</a></li>
+	 					</ul>
+	 				</div>
+	 				<div class="form-search">
+	 					<form action="" method="get">
+	 						<input type="text" placeholder="Search..." />
+	 						<input type="submit" value="Search" />
+	 					</form>
+	 				</div>
+	 			</div>
+	 		</div>
+	 	</div>
+	 	<!-- END HEADER -->
+
+	 	<!-- MAIN CONTENT -->
+	 	<div class="main-content">
+	 		<!-- Có cấu trúc layout -->
+	 		<div class="row">
+	 			<div class="content">
+	 				<div class="content-primary">
+	 					<h1 class="main-heading">Main Content</h1>
+	 					<p class="main-p">
+	 						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	 						tempor incididunt ut labore et dolore magna aliqua.
+	 					</p>
+	 					<div class="read-more">
+	 						<a href="#" class="read-link">
+	 							<span class="arrow">&#8594;</span>
+	 							<span class="read-text">Read More</span>
+	 						</a>
+	 					</div>
+	 				</div>
+
+	 				<div class="content-block">
+	 					<!-- Cấu trúc layout 2 hàng, mỗi hàng 2 cột -->
+	 					<div class="row">
+	 						<div class="content-item">
+	 							<h3 class="heading-item">Heading</h3>
+	 							<p class="p-item">
+	 								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	 							</p>
+	 						</div>
+	 						<div class="content-item">
+	 							<h3 class="heading-item">Heading</h3>
+	 							<p class="p-item">
+	 								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	 							</p>
+	 						</div>
+	 					</div>
+
+	 					<div class="row">
+	 						<div class="content-item">
+	 							<h3 class="heading-item">Heading</h3>
+	 							<p class="p-item">
+	 								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	 							</p>
+	 						</div>
+	 						<div class="content-item">
+	 							<h3 class="heading-item">Heading</h3>
+	 							<p class="p-item">
+	 								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	 							</p>
+	 						</div>
+	 					</div>
+
+	 				</div>
+	 			</div>
+
+	 			<div class="sidebar">
+	 				<h2 class="sidebar-title">Sidebar</h2>
+	 				<h5 class="ads">Advertisement</h5>
+	 				<div class="block-128">
+	 					<!-- Cấu trúc 3 hàng, mỗi hàng 2 cột -->
+	 					<div class="row">
+	 						<div class="item-128">128x128</div>
+	 						<div class="item-128">128x128</div>
+	 					</div>
+	 					<div class="row">
+	 						<div class="item-128">128x128</div>
+	 						<div class="item-128">128x128</div>
+	 					</div>
+	 					<!-- Ctrl + F để tìm kiếm trong Sublime -->
+	 					<div class="row">
+	 						<div class="item-128">128x128</div>
+	 						<div class="item-128">128x128</div>
+	 					</div>
+	 				</div>
+	 				<div class="widget-block">
+	 					<h3 class="widget-h">Widget</h3>
+	 					<ul class="widget">
+		 					<li>Item 1</li>
+		 					<li>Item 2</li>
+		 					<li>Item 3</li>
+		 					<li>Item 4</li>
+		 					<li>Item 5</li>
+	 					</ul>
+	 				</div>
+	 			</div>
+	 		</div>
+	 	</div>
+	 	<!-- END MAIN CONTENT -->
+
+	 	<!-- FOOTER -->
+	 	<div class="footer">
+	 		&copy; Company 2012 - Layout based on <a href="#">YAML</a>
+	 	</div>
+	 	<!-- END FOOTER -->
+	 </div>
+</body>
+</html>

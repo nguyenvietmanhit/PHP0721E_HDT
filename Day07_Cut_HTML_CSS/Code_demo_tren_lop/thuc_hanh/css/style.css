@@ -1,0 +1,70 @@
+/*style.css*/
+.container {
+    /* background: red; */
+    width: 70%;
+    margin: 0 auto;
+}
+
+.project-name {
+	margin: 0;
+}
+
+.logo {
+    background: #444;
+    color: #fff;
+    padding: 10px 0 20px 10px;
+}
+
+.row {
+    display: flex;
+}
+
+.links {
+    width: 70%;
+}
+
+.form-search {
+    width: 30%;
+}
+
+.ul-link {
+    list-style: none;
+}
+
+.ul-link li {
+    display: inline-block;
+}
+
+.hide {
+	display: none;
+}
+
+/*Khi hover vào li đầu tiên, thì class hide bên trong đc block*/
+.ul-link li:first-child:hover .hide {
+    display: block;
+}
+
+.ul-link li:first-child {
+	position: relative;
+}
+
+/*Menu con: postion = absolute, menu cha có position: relative*/
+.child-menu {
+    position: absolute;
+    background: #ccc;
+    top: 15px;
+    left: 10px;
+    padding: 5px 20px;
+    min-width: 120px;
+}
+
+.child-menu a {
+	display: block;
+}
+
+.item-128 {
+    width: 50%;
+    background: #ccc;
+    padding: 45px 25px;
+    margin: 10px;
+}
