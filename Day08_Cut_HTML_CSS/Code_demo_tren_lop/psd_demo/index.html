@@ -1,0 +1,49 @@
+<!-- 
+File: index.html 
+- Kỹ thuật cắt HTML CSS từ file thiết kế (Photoshop) 
+ là chuyển đổi từ file thiết kế thành trang HTML CSS, đảm bảo
+ chuyển đổi đúng ảnh, font chữ, kích thước chữ, màu nền, màu chữ ....
+ - Demo sử dụng bài tập 1 trong ngày 8 -> mở file lên bằng PS
+ + Các bước cắt HTML CSS
+ - Tạo cấu trúc thư mục để lưu trữ tài nguyên từ file thiết kế
+ psd_demo /
+          /images : chứa các ảnh lấy đc từ PS
+          /fonts: chứa các font chữ lấy đc từ PS
+          /css: chứa các file .css
+              /style.css: file CSS chính của trang
+          /js: chứa các file javascript
+          /index.html: File chứa code HTML để tạo ra trang web
+- Cắt ảnh từ file PS, ảnh đặt vào thư mục images  
+Ctrl + : zoom to
+Ctrl - : zoom nhỏ
+Alt + Con xoay chuột     
+Space + Chuột trái: di chuyển tới vùng hiển thị mong muốn 
+Cần xác định đâu là ảnh trong file PS?  Ảnh là những cái mà ko thể dùng HTML CSS để tạo ra đc
+Ưu tiên dùng HTML CSS để linh hoạt hơn thay vì cắt thành ảnh
+Kỹ thuật cắt ảnh: dùng tool Crop của PS -> C, cần lấy vùng chọn trước khi cắt ảnh
+
+Ctrl Alt Z -> back lại trạng thái trước
+- Lấy font các text đang sử dụng mà máy bạn chưa có
+font-family
+Cần xác định tất cả font chữ đang có trong file PS
+Dùng công cụ Text của PS -> T
+Để kiểm tra máy tính của các font nào, vào đường dẫn sau:
+C:/Windows/Fonts/
+NẾu font chưa có, search gg download font về thư mục fonts của bạn vừa tạo ra: Pacifico, từ khóa gg: font pacifico download
+fonts/Pacifico-Regular.ttf
+- Code HMTL CSS
+index.html
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Cắt HTML CSS từ file PSD</title>
+		<!-- Nhúng file css từ bên ngoài -->
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+	<body>
+		<h1>Thẻ h1</h1>
+	</body>
+</html>
+<!-- 8h10 tiếp tục -->
