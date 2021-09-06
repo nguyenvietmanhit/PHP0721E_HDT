@@ -1,0 +1,72 @@
+/*css/style.css*/
+.header {
+    background: #2F2F2F;
+    color: #fff;
+    padding: 10px 0;
+}
+
+.container {
+    width: 70%;
+    margin: auto;
+}
+
+/*Nhúng font từ bên ngoài vào CSS*/
+@font-face {
+	font-family: 'Pacifico-Regular';
+	src: url("../fonts/Pacifico-Regular.ttf");
+}
+
+.logo {
+    font-family: 'Pacifico-Regular';
+    font-size: 30px;
+    width: 30%;
+}
+
+.menu {
+	width: 70%;
+}
+
+ul {
+	list-style: none;
+}
+
+.row {
+    display: flex;
+}
+
+.menu li {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.menu li a {
+	color: #fff;
+	text-decoration: none;
+	font-family: 'Myriad Pro';
+}
+
+.learn-more {
+    background: #F99640;
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 15px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.item-bg {
+    background: black;
+    height: 130px;
+}
+
+.center-item {
+    width: 33.33%;
+    margin: 0 20px;
+}
+
+/*Fix bị lệch khi các cột bên trong đang có margin trái phải*/
+.main-center .row {
+	margin: 0 -20px;
+}
