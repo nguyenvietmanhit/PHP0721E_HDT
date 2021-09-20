@@ -1,0 +1,182 @@
+<!-- js_basic_1.html -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Javascript cơ bản phần 1</title>
+</head>
+<body>
+	<!-- 
+	- HTML , CSS hiển thị thuần về mặt giao diện
+	-> muốn tương tác đc với web -> Javascript
+	VD: Xây 1 ngôi nhà:
+	- HTML: khung ngôi nhà - phần thô
+	- CSS: sơn nhà, các phòng - trang trí cho HTML
+	- Javascript: hiển thị 1 chuông cửa, giúp bấm chuông -> ngôi nhà phản ứng lại -> ng trong nha nghe tiếng chuông
+	-> Javascript giúp tương tác với HTML thông qua các sự kiện
+	- Hiện nay Javascript phát triển cực kỳ mạnh: framwork, thư viện dựa trên JS như Node, Angular, React, Vue ...
+	-> để học JS theo hướng Frontend  -> đào sâu Javascript -> học FW, thư viện
+	-> học PHP học JS theo hướng cơ bản
+	- Học JAvascript theo 2 giai đoạn:
+	+ Tư duy lập trình: biến, hằng, hàm, thuật toán ...
+	+ Tương tác với giao diện -> đặc thù của Javascript
+
+	1 - Cú pháp khai báo, có 3 cách như nhúng CSS:
+	+ Inline/Trực tiếp trong thẻ HTML, thông qua tên sự kiện
+	+ Inline/Trực tiếp trong file HTML, cặp thẻ script
+	+ Từ 1 file .js 
+	 -->
+	 <h1 onclick="alert('Clicked!')" >Click để hiển thị cảnh báo</h1>
+
+	 <script type="text/javascript">
+	 	// Code Js
+	 	// alert('Tự động chạy khi tải trang');
+	 </script>
+
+	 <!-- <script type="text/javascript" src="demo.js"></script> -->
+	 <!-- Thực tế nên dùng cách nào: .js -->
+	 <!-- 
+	2 - Nên nhúng code JS ở đâu trên trang HTML
+	+ Thực tế CSS thích đặt ở đâu trên trang đều đc -> nên đặt trong head
+	+ Với JS nên đặt ở cuối trang, trc thẻ đóng body </body> -> hiệu suất tải trang -> ưu tiên đọc HTML CSS trước (giao diện) -> tương tác (JS )ưu tiên thấp nhất -> vị trí code JS tối ưu nhất là trc </body>
+	  -->
+
+	  <script type="text/javascript">
+	  	// 3 - Khái niệm cơ bản của Javascript nói riêng và lập trình nói chung
+	  	// + Biến: 
+	  	// - Về mặt vật lý, là 1 vùng nhớ trong thiết bị
+	  	// - Dùng để lưu trữ giá trị, giá trị có thể thay đổi - biến đổi
+	  	var name = 'Mạnh'; //variable
+	  	var age = 31;
+	  	var abc = 5;
+	  	var xyz = 'hello';
+	  	// let address = 'HÀ Nội'; // dùng cho biến cục bộ
+	  	// - Quy tắc khai báo biến
+	  	// + Tên biến phải bắt đầu bằng ký tự chữ hoặc ký tự _
+	  	// var 1name = 'nvmanh'; //ko hợp lệ
+	  	// - Tên biến ko đc chứa các ký tự đặc biệt, ngoại trừ $
+	  	// JS báo lỗi thông tab Console của trình duyệt
+	  	// var name&abc = 'manh';
+	  	// - Tên biến ko đc trùng khóa của JS: if, else, switch, case ..
+	  	// var if = 'manh';
+	  	// - Tên biến trong JS là phân biệt hoa thường
+	  	var name1 = 'Mạnh';
+	  	var nAme2 = 'Mạnh';
+	  	// - Nên đặt tên biến có ý nghĩa
+	  	// var x = 5;
+	  	// var y = 3;
+	  	var number1 = 5;
+	  	var number2 = 3;
+	  	//var $abc;
+	  	//var _name;
+	  	// KHai báo 3 biến chứa tên, tuổi, địa chỉ cá nhân:
+	  	var name = 'Mạnh';
+	  	// name = 'abbdssdss';
+	  	var age = 31;
+	  	var address = 'Hà Nội';
+	  	// Hiển thị ra màn hình, JS dùng toán tử + để lấy giá trị của biến
+	  	document.write('Tên của bạn: ' + name);
+	  	document.write('<br />');
+	  	document.write('Tuổi của bạn: ' + age);
+	  	document.write('<br />');
+	  	document.write('Địa chỉ của bạn: ' + address);
+	  	// + Hằng:
+	  	// - Là biến, không thể thay đổi đc giá trị của hằng khi nó đã đc khai báo
+	  	// - Cú pháp khai báo hằng: nên viết hoa hằng
+	  	const PI = 3.14;
+	  	const MAX_AGE = 120; //tên biến, hằng có nhiều từ, dùng ký tự _ ngăn cách
+	  	// Gán giá trị khác cho hằng sẽ báo lỗi
+	  	// MAX_AGE = 1;
+	  	// + Kiểu dữ liệu: phân loại dữ liệu cụ thể, nhìn vào giá trị để biết đc kiểu dữ liệu của biến
+	  	// - number: kiểu số, chứa giá trị là số
+	  	var number1 = 31;
+	  	var number2 = -10;
+	  	var number3 = 5.6;
+	  	console.log('Log ra tab Console, dùng để debug');
+	  	console.log(typeof number1); //number
+	  	// - string: kiểu chuỗi, giá trị đc bao bởi cặp ký tự ' hoặc "
+	  	var str1 = 'String 1';
+	  	var str2 = "String 2";
+	  	var str3 = "Hello, 'nvmanh' ";
+	  	var str4 = '31';
+	  	console.log(str3);
+	  	console.log(typeof str3); //string
+	  	// - boolean/bool: kiểu true/false, chỉ gồm 2 giá trị duy nhất là true và false, viết thường hết
+	  	var boolean1 = true;
+	  	var boolean2 = false;
+	  	// var boolean3 = True; //báo lỗi vì giá trị sai, phải viết thường hết
+	  	console.log(typeof boolean1); //bool
+	  	// Kiểu dữ liệu number, string, boolean -> kiểu dữ liệu nguyên thủy
+	  	// - undefined: sinh ra khi khai báo biến mà ko gán giá trị cho biến
+	  	var und1;
+	  	console.log(typeof und1); //undefined
+	  	// -> khai báo biến cần gán giá trị luôn
+	  	// - null: kiểu dữ liệu đặc biệt, chỉ có 1 giá trị duy nhất = null, viết thường
+	  	var n1 = null;
+	  	console.log(typeof n1); //object, JS coi null là object
+	  	// - array: kiểu mảng, mảng chứa nhiều kiểu dữ liệu khác nhau, kể cả chính nó
+	  	var arr1 = [123, 'nvmanh', true]; //mảng có 3 phần tử
+	  	var arr2 = [false, [1, 2, 3]];
+	  	console.log(typeof arr1); //object -> JS coi array là 1 object
+	  	// - object: kiểu đối tượng, có thuộc tính và hành vi
+	  	var obj1 = {
+	  		name: 'nvmanh',
+	  		age: 29,
+	  		address: 'Hà Nội'
+	  	};
+	  	console.log(typeof obj1);//object
+	  	// -> với PHP ko nặng về JS, các kiểu dữ liệu object: null, array, object sẽ ko đi sâu
+	  	// -> Frontend: Node, React, Angular ... -> học sâu về các kiểu dữ liệu
+	  	// + HÀM:
+	  	// - Là tập câu lệnh giải quyết bài toán
+	  	// - Có tính sử dụng lại
+	  	var number1 = 5;
+	  	var number2 = 4;
+	  	var sum = number1 + number2;
+	  	console.log(sum); //9
+	  	// - Phân loại hàm: 
+	  	// + Hàm có sẵn của ngôn ngữ đó: document.write, console.log
+	  	// typeof
+	  	// + Hàm tự định nghĩa, tự xây dựng:
+	  	// - Hàm tự định nghĩa:
+	  	// + Cú pháp khai báo:
+	  	// - Tên hàm tuân theo quy tắc đặt tên biến
+	  	var name_of_mine = 'mạnh';
+	  	// tên hàm kiểu camel, hàm ko có tham số
+	  	function showName() {
+	  		//Code bên trong hàm
+	  		console.log('Hàm showName abc');
+	  	}
+	  	// - Bắt buộc phải có bước gọi hàm
+	  	showName(); // Hàm showName
+	  	showName(); // Hàm showName
+	  	showName(); // Hàm showName
+	  	showName(); // Hàm showName
+
+	  	function displayAge() {
+
+	  	}
+
+	  	// + Hàm có tham số: tham số là biến chưa có giá trị cụ thể
+	  	// tại thời điểm khai báo
+	  	// Làm thế nào để xác định hàm sẽ có các tham số nào ? Cần dựa
+	  	// vào bài toán
+	  	// Bài toán: viết hàm tính tổng 2 số bất kỳ
+	  	// -> xác định  2 tham số là 2 số bất kỳ đó
+	  	function sumNumber(number1, number2) {
+	  		// Code bên trong
+	  		var sum = number1 + number2;
+	  		console.log("Tổng = " + sum);
+	  	}
+
+	  	// Bước gọi hàm là bước truyền giá trị thật cho các tham số,
+	  	// thể hiển cho tính sử dụng lại của hàm
+	  	sumNumber(2, 3); //Tổng = 5
+	  	sumNumber(1, 5); //Tổng = 6
+	  	// + Hàm có tham số và có giá trị trả về
+
+	  </script>
+
+
+</body>
+</html>
