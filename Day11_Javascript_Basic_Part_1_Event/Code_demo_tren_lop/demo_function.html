@@ -1,0 +1,117 @@
+<!-- demo_function.html -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hàm trong JS</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// Khai báo biến với từ khóa let
+		// console.log(x); //undefined
+		// var x = 5;
+		// console.log(x); // 5
+
+		// console.log(y); //Cannot access 'y' before initialization
+		// let y = 4;
+		// console.log(y);
+
+		// -> var dùng để khai báo biến toàn cục, có phạm vi trên toàn bộ chương trình code
+		// -> let khai báo biến phạm vi trong 1 khối lệnh, phạm vi chặt chẽ hơn so với var, nếu có lỗi -> dừng chương trình
+
+		// - Hàm trong JS
+		// + Hàm dựng sẵn bởi ngôn ngữ
+		// + Hàm tự định nghĩa
+		// Viết hàm hiển thị tên của 1 người bất kỳ
+		function showName(fullname) {
+			console.log("Tên của bạn: " + fullname);
+		}
+		// Gọi hàm
+		showName('Mạnh'); //Tên của bạn: Mạnh
+		showName('Thành');
+		showName('Long');
+		// [Nên tiếp cận] Hàm có tham số và có giá trị trả về
+		// + Viết hàm hiển thị tuổi của người bất kỳ
+		// Cách tiếp cận thông thường, xử lý logic trong hàm như bình thường
+		function showAge(age) {
+			console.log("Tuổi của bạn: " + age);
+		}
+		showAge(31); //Tuổi của bạn: 31
+		// Cách tiếp cận nên áp dụng
+		// Cần dựa vào bài toán để xác định kiểu dữ liệu trả về
+		// Bài toán: hiển thị tên của ai đó -> 
+		function showAgeReturn(age) {
+			var result = "Tuổi của bạn: " + age; //có kiểu dữ liệu = string
+			return result; //string
+			// -> hàm này tương đương như 1 giá trị có kiểu dữ liệu là string
+			// Code sau từ khóa return sẽ ko đc thực thi -> return kết thúc hàm, có viết code clear/sạch hơn
+			console.log("Text này có đc hiển thị ko?");
+		}
+		// hàm khi có giá trị trả về sẽ rất linh hoạt
+		// -> Từ khóa return: làm cho hàm có giá trị trả về và kết thúc hàm
+		var show1 = showAgeReturn(30); //Tuổi của bạn: 30
+		console.log(show1);
+		console.log(show1 + " hello abc");
+		// VD: viết hàm tính tổng 3 số bất kỳ:
+		// -> xác định tham số? 3 tham số
+		// -> xác định giá trị trả về của hàm? number
+		function add(number1, number2, number3) {
+			var sum = 0;
+			sum = number1 + number2 + number3;
+			return sum;
+		}
+		var sum1 = add(1, 2, 3);
+		console.log(sum1); // 6
+		console.log("Tổng = " + sum1); //Tổng = 6
+		var sum2 = add(3, 4, 5);
+		console.log("sum2 = " + sum2);// sum2 = 12
+		// - Một số hàm có sẵn căn bản trong JS
+		// + Show text ra màn hình, ko dùng thực tế
+		// document.write('Show text');
+		// + Hàm debug
+		console.log('Console.log'); //
+		// + Hiển thị popup cảnh báo
+		// alert('Tôi là \n Mạnh'); // \n = newline
+		// + Hiển thị popup dưới dạng nhập liệu
+		//var fullname = prompt('Nhập vào tên của bạn: ');
+		//console.log(fullname);
+		// + Hiển thị popup dạng xác nhận
+		//var is_confirm = confirm('Bạn có muốn xóa bản ghi ko ?');
+		//console.log(is_confirm);
+	</script>
+
+	<h1 class="h1-class">Thẻ h1</h1>
+	<h2 id="h2-id">Thẻ h2</h2>
+	<h5 class="h1-class">Thẻ h5</h5>
+	<script type="text/javascript">
+		// + Lấy đối tượng HTML đầu tiên bằng cú pháp lấy selector của CSS
+		var obj_h1 = document.querySelector('.h1-class');
+		console.log(obj_h1);
+		console.log(typeof obj_h1); // object
+		// + Lấy mọi đối tượng HTML tìm thấy
+		var objs = document.querySelectorAll('.h1-class');
+		console.log(objs); // kiểu object của class = NodeList
+		// + Set nội dung text cho đối tượng HTML
+		// Lấy đối tượng
+		var obj_h2 = document.querySelector('#h2-id');
+		// Thao tác với đối tượng vừa lấy đc
+		// obj_h2.innerHTML = "<u>Thẻ h2 bị gạch chân</u>"; //HTML
+		// obj_h2.innerText = "<u>Thẻ h2 bị gạch chân</u>"; // text
+		// + Get nội dung:
+		var h2_content = obj_h2.innerText;
+		console.log(h2_content); //Thẻ h2
+		// + Chuyển hướng
+		// window.location = 'https://google.vn';
+		// + Đếm số ký tự của chuỗi: 
+		var h2_length = h2_content.length;
+		console.log(h2_length); //6
+
+		var str = "demo";
+		var length = str.length; // thuộc tính length của đối tượng str
+		console.log("Chuỗi này có" + length + " ký tự");
+
+		console.log(length); //4
+		// + Gửi mail
+		window.open('mailto:nguyenvietmanhit@gmail.com');
+	</script>
+</body>
+</html>

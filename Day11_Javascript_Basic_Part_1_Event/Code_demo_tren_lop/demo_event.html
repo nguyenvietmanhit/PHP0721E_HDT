@@ -1,0 +1,67 @@
+<!-- demo_event.html -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Demo sự kiện trong JS</title>
+</head>
+<body>
+	<h1 class="h1-click">
+		Click để show popup
+	</h1>
+	<select id="country">
+		<option value="0">HN</option>
+		<option value="1">ĐN</option>
+		<option value="2">HCM</option>
+	</select>
+
+	<input type="text" />
+
+	<input type="number" />
+
+	<script type="text/javascript">
+		// - Các sự kiện cơ bản
+		// + onmouseenter: xảy ra khi hover qua phần tử:
+		// Lấy đối tượng:
+		var obj_input = document.querySelector('input[type=text]');
+		// Gắn sự kiện
+		obj_input.addEventListener('mouseenter', function() {
+			this.style = "background: red";
+		});
+		// + onmouseleave: ngược với onmouseenter -> đi ra khỏi phần tử
+		obj_input.addEventListener('mouseleave', function() {
+			this.style = "background: #fff";
+		});
+
+
+		// + onchange: xảy ra khi thay đổi select, checkbox, radio
+		// Lấy đối tượng:
+		var obj_country = document.querySelector('#country');
+		// Gán sự kiện
+		obj_country.addEventListener('change', function() {
+			// + Lấy value của option vừa select:
+			// var value = obj_country.value;
+			// Sử dụng this để tham chiếu đến đúng obj hiện tại
+			var value = this.value;
+			// alert(value);
+			// + Lấy text của option:
+			var content_text = this.options[this.selectedIndex].text;
+			alert(content_text);
+		});
+
+		// + onclick: xảy ra ngay khi click đối tượng HTML
+		// Lấy đối tượng:
+		var obj_click = document.querySelector('.h1-click');
+		// Gán sự kiện cho đối tượng
+		// Tham số đầu tiên là tên sự kiện (bỏ on)
+		// Tham số thứ 2 là 1 hàm callback ko có tên hàm, ko có tham số nào cả
+		obj_click.addEventListener('click', function(){
+			// Code bên trong hàm callback: hàm callback chờ sự kiện click xảy ra xong thì mới chạy code bên trong callback
+			alert('Clicked');
+		});
+
+		// - Event/Sự kiện
+		// + Là 1 hành động giúp tương tác được với HTML 
+
+	</script>
+</body>
+</html>
