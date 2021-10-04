@@ -1,0 +1,73 @@
+<!-- event_js_2.html -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Demo event JS phần 2</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		// Code chạy sẽ bị lỗi ko tìm thấy đối tượng, do trình duyệt đọc file từ trên xuống -> ko tìm thấy selector
+		// Sử dụng sự kiện onload để đảm bảo code JS luôn chạy sau cùng, chờ HTML CSS tải xong hết mới chạy code JS
+		window.addEventListener('load', function() {
+			// + Lấy đối tượng h3
+			var obj_h3 = document.querySelector('.h3-click');
+			// + Gắn sự kiện
+			obj_h3.addEventListener('click', function() {
+				alert('Đã click!');
+			});
+		});
+
+	</script>
+
+	<h3 class="h3-click">Click để show alert</h3>
+
+	Nhập tên
+	<input type="text" id="fullname" />
+	<h3 id="error" style="color: red"></h3>
+
+	<form id="form">
+		Nhập tuổi:
+		<input type="number" />
+		<br />
+		<input type="submit" value="Hiển thị tuổi" />
+	</form>
+
+
+	<script type="text/javascript">
+		// - Sự kiện onsubmit: xảy ra khi submit form
+		// + Lấy obj form
+		var obj_form = document.querySelector('#form');
+		// + Gắn sự kiện
+		obj_form.addEventListener('submit', function() {
+			alert('Form đc submit');
+		});
+
+		// - Sự kiện onkeyup: xảy ra khi nhấn phím và nhả ra
+		// + Lấy obj
+		var obj_fullname = document.querySelector('#fullname');
+		// + Gắn sự kiện cho obj trên
+		obj_fullname.addEventListener('keyup', function() {
+			// Lấy giá tri vừa nhập vào input
+			var value = this.value;
+			if (value.length < 4) {
+				var error = "Phải nhập >= 4 ký tự";
+				// Lấy obj chứa error:
+				var obj_error = document.querySelector('#error');
+				obj_error.innerHTML = error;
+			} else {
+				console.log("SK onkeyup được gọi, giá trị hiện tại = " + value);
+				var obj_error = document.querySelector('#error');
+				obj_error.innerHTML = '';
+			}
+		});
+
+		// - Sự kiện onkeydown/onkeypress: xảy ra ngay khi nhấn phím 
+		obj_fullname.addEventListener('keypress', function() {
+			// Lấy giá tri vừa nhập vào input
+			var value = this.value;
+			//console.log("SK onkeypress được gọi, giá trị hiện tại = " + value);
+		});
+	</script>
+</body>
+</html>
