@@ -1,0 +1,31 @@
+<!-- break_continue.html -->
+
+<script type="text/javascript">
+	// - Điều khiển vòng lặp
+	// Hiển thị từ 1 đến 10 dùng vòng lặp
+	for (var i = 1; i <= 10; i++) {
+		console.log(i);
+	}
+	//12345678910
+	// + break: trong vòng lặp mà gặp break, thoát hẳn vòng lặp luôn -> ko chạy code phía sau break
+	for (var j = 1; j <= 10; j++) {
+		// j = 1
+		console.log(j);
+		if (j <= 1) {
+			break;
+		}
+	}
+	var sum = k++ - k--;
+	//1
+	// + continue: bỏ qua lần lặp hiện tại - ko chạy code phía sau continue, nhảy tới lần lặp kế tiếp
+	for (var k = 1; k <= 10; ++k) {
+		// k = 1
+		console.log(k);
+		if (k <= 1) {
+			continue;
+		}
+	}
+	// 1
+	// 1
+
+</script>

@@ -1,0 +1,83 @@
+<!-- chua_bai_tap.html -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chữa bài tập ngày 12</title>
+</head>
+<body>
+	<h1>Bài 1</h1>
+	<!-- Do form đặc thù nhiều nút giống như submit, sử dụng button thay vì các nút submit -->
+	<!-- Tạo các thẻ chờ để đổ dữ liệu từ JS -->
+	<h3 style="color: red" id="error"></h3>
+	<h3 style="color: green" id="result"></h3>
+
+	<form>
+		Nhập số a:
+		<input type="text" id="a-bt1" />
+		<br />
+		Nhập số b:
+		<input type="text" id="b-bt1" />
+		<br />
+		<button id="btn-add">a + b</button>
+		<button id="btn-sub">a - b</button>
+	</form>
+
+
+
+	<script type="text/javascript">
+		
+		// Xử lý a + b 
+		// + LẤy obj trước
+		var obj_add = document.querySelector('#btn-add');
+		// + Gắn sk cho obj
+		obj_add.addEventListener('click', function() {
+			// Quy trình xử lý form Javascript / PHP
+			// + B1: Tạo biến chứa lỗi và kết quả
+			var error = '';
+			var result = '';
+			// B2: LẤy giá trị input từ form
+			// + Lấy obj input a:
+			var obj_a = document.querySelector('#a-bt1');
+			// + Lấy giá trị của obj trên
+			var a = obj_a.value;
+
+			// + Lấy obj input b:
+			var obj_b = document.querySelector('#b-bt1');
+			// + Lấy giá trị của obj trên
+			var b = obj_b.value;
+
+			// B3: Validate form: lọc dữ liệu từ user -> dữ liệu rác, nguy hiểm, đổ thông tin lỗi vào biến error
+			// - validate phải nhập số: isNaN (is not a number)
+			// - validate rỗng khi ít nhất 1 trong 2 input rỗng
+			if (a == '' || b == '') {
+				error = 'Phải nhập cả 2 trường';
+			} else if (isNaN(a) == true || isNaN(b) == true) {
+				error = 'Phải nhập số';
+			}
+			// B4: xử lý logic bài toán là cộng hai số, chỉ khi ko có lỗi nào xảy ra
+			if (error == '') {
+				console.log(typeof a); //number? string
+				console.log(typeof b); // 
+				// Mặc định giá trị lấy từ form là string -> cộng -> cộng 2 chuỗi chứ ko phải cộng hai số
+				// Cần ép kiểu về số r mới cộng
+				a = parseInt(a);
+				b = parseInt(b);
+				var sum = a + b;
+				// Kết quả đổ vào biến result
+				result = "Tổng hai số = " + sum;
+			}
+			// B5: Hiển thị error và result ra màn hình
+			// Viết tắt lấy obj và hiển thị 
+			document.querySelector('#error').innerHTML = error;
+			document.querySelector('#result').innerHTML = result;
+			// Sau khi submit form trang bị tải lại - hành vi mặc định của form
+			// giống như thẻ <a> -> click là nhảy tới link khác 
+			// -> để giữ lại đc data sau khi submit -> ngăn ngừa hành vi mặc định của form -> bắt ko đc tải lại, bằng dòng code sau:
+			// event là obj có sẵn của JS, chỉ tồn tại trong hàm callback mà thôi
+			event.preventDefault();
+			// cần config tab console để giữ lại đc lỗi JS sau khi tải lại
+			// 8h30
+		})
+	</script>
+</body>
+</html>

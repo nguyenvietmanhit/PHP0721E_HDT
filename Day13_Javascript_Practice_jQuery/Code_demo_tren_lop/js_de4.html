@@ -1,0 +1,62 @@
+<!-- js_de4.html -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS đề 4</title>
+</head>
+<body>
+	<form id="form">
+		Nhập họ tên: <input type="text" id="fullname" />
+		<br />
+		Email: <input type="text" id="email" />
+		<br />
+		SĐT: <input type="text" id="phone" />
+		<br />
+		<input type="submit" value="Check validate" />
+	</form>
+	<h3 style="color: red" id="error"></h3>
+	<h3 style="color: green" id="result"></h3>
+
+	<script type="text/javascript">
+		// Do form chỉ có 1 nút submit, áp dụng sự kiện onsubmit cho form
+		var obj_form = document.querySelector('#form');
+		obj_form.addEventListener('submit', function() {
+			// B1: khai báo biến lỗi, kết quả
+			var error = '';
+			var result = '';
+			// B2: Lấy giá trị từ form
+			// Fullname
+			var obj_fullname = document.querySelector('#fullname');
+			var fullname = obj_fullname.value;
+			// Email
+			var obj_email = document.querySelector('#email');
+			var email = obj_email.value;
+			// SĐT
+			var obj_phone = document.querySelector('#phone');
+			var phone = obj_phone.value;
+			// B3: Validate form, nếu input nào có lỗi thì focus vào input đó luôn
+			if (fullname == '') {
+				error = 'Phải nhập tên';
+				obj_fullname.focus();
+			} else if (validateEmail(email) == false) {
+				error = 'Email chưa đúng định dạng';
+				obj_email.focus();
+			} else if (phone.length < 10) {
+				error = 'Phone phải >= 10 ký tự';
+				obj_phone.focus();
+			}
+			// B4: Xử lý logic bài toán
+			// B5: Hiển thị error và result
+			document.querySelector('#error').innerHTML = error;
+			document.querySelector('#result').innerHTML = result;
+			event.preventDefault();
+		})
+
+		// Hàm validate email
+		function validateEmail(email) {
+  			const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  			return re.test(email);
+		}
+	</script>
+</body>
+</html>
