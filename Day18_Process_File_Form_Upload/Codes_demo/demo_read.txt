@@ -1,0 +1,4 @@
+Nội dung dòng 1 file demo_read.txt
+Nội dung dòng 2 file demo_read.txt
+Nội dung dòng 3 file demo_read.txt
+Nội dung dòng 4 file demo_read.txt
