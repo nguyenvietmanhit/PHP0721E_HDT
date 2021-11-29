@@ -77,6 +77,7 @@ if (isset($_POST['submit'])) {
       // Gọi hàm để chính thức chuyển file từ thư mục tạm vào thư mục upload
       move_uploaded_file($avatars['tmp_name'], "$dir_upload/$filename");
       // Hiển thị thông tin file ra màn hình: sử dụng thẻ img + src
+      $result .= "Avatar: <img src='$dir_upload/$filename' height='100px' />";
     }
   }
 
