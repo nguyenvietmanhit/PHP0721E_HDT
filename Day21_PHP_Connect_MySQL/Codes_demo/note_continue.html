@@ -62,3 +62,101 @@ DROP DATABASE abc;
 # + Kiểu Date và Time: kiểu thời gian, lưu chuỗi thời gian theo 1 format cố định:
 # DATETIME: lưu ngày giờ theo kiểu thủ công, format khi lưu vào CSDL bắt buộc phải là Y-m-d H:i:s
 # TIMESTAMP: lưu ngày giờ theo kiểu tự động lấy đc múi giờ,format khi lưu vào CSDL bắt buộc Y-m-d H:i:s
+
+
+
+SQL và MySQL ko giống nhau
+- SQL: là 1 ngôn ngữ truy vấn có cấu trúc - Structure Query Language
+- MySQL: là 1 CSDL, tương tác với MySQL sử dụng SQL, giống SQLServer, MongoDb, Oracle
+
+# 1 - Từ khóa LIKE: so sánh tương đối
+SELECT * FROM products WHERE name='laptop'; # so sánh tuyệt đối
+# tìm kiếm sp chứa từ laptop, ký tự % đại diện cho 1 ký tự bất kỳ
+SELECT * FROM products WHERE name LIKE '%laptop%'; #laptop, máy tính laptop, abclaptopabc ...
+#tìm kiếm các chuỗi bắt đầu bằng laptop
+SELECT * FROM products WHERE name LIKE 'laptop%'; # laptop asus, abc laptop -> false
+#tìm kiếm các chuỗi kết thúc bằng laptop
+SELECT * FROM products WHERE name LIKE '%laptop';
+# Elastic Search, Algolia Search -> index data dạng json
+
+# 2 - ORDER BY: sắp xếp theo trường tăng hoặc giảm dần
+# Sắp xếp giảm dần theo trường id
+SELECT * FROM products ORDER BY id DESC; # descenment
+# Sắp xếp tăng dần theo ngày tạo sp
+SELECT * FROM products ORDER BY created_at ASC; #ascement
+
+# 3 - BETWEEN: thay thế cho >= AND <=
+SELECT * FROM products WHERE id >= 1 AND id <= 3; # thông thường
+SELECT * FROM products WHERE id BETWEEN 1 AND 3; # dễ đọc hơn
+
+# 4 - IN: thay thế cho các OR
+SELECT * FROM products WHERE id = 1 OR id = 2 OR id = 3; #thông thường
+SELECT * FROM products WHERE id IN (1, 2, 3); # dễ đọc hơn
+
+# 5 - Hàm COUNT: đếm số bản ghi trả về
+SELECT COUNT(id) AS count_id FROM products;
+
+# 6 - Hàm MAX, MIN: lấy giá trị lớn nhất, nhỏ nhất theo trường
+SELECT MAX(id) AS max_id, MIN(id) AS min_id FROM products;
+
+# 7 - GROUP BY: nhóm các giá trị theo trường, tính toán trên nhóm này
+# Đếm các sản phẩm cùng giá
+SELECT price, COUNT(id) AS count_id FROM products GROUP BY price;
+
+# 8 - JOIN: là cơ chế lấy dữ liệu từ các bảng có liên kết
+# VD:  danh mục và sản phẩm, 1 danh mục chứa nhiều sản phẩm, 1 sản phẩm thuộc về 1 danh mục
+# - Trong CSDL có 3 quan hệ chính:
+# 1 - 1: 1 danh mục có 1 sp, 1 sp chỉ thuộc về 1 danh mục
+# 1 - n: 1 danh mục có nhiều sp, 1 sp chỉ thuộc về danh mục
+# n - n: 1 danh mục có nhiều sp. 1 sp thuộc về nhiều danh mục
+# - Trong CSDL mối quan hệ thể hiện qua khóa ngoại (foreign key)
+# Tạo bảng categories: id, name
+CREATE TABLE IF NOT EXISTS categories(
+id INT(11) AUTO_INCREMENT,
+name VARCHAR(255) NOT NULL,
+PRIMARY KEY (id)
+);
+# Tạo bảng products: id, category_id, name, price trong đó trường category_id là khóa ngoại của bảng
+# products, chú ý cách đặt tên khóa ngoại
+CREATE TABLE IF NOT EXISTS products(
+id INT(11) AUTO_INCREMENT,
+category_id INT(11) NOT NULL,
+name VARCHAR(150),
+price INT(11),
+PRIMARY KEY (id),
+# khai báo tường minh khóa ngoại cho bảng products, giúp cho dữ liệu chặt chẽ hơn khgi mà thêm
+#, sửa, xóa sp luôn cần category_id chính xác thì mới thao tác đc
+FOREIGN KEY (category_id) REFERENCES categories(id)
+);
+
+
+# JOIN trong SQL có 3 kiểu chính: khi thao tác với trường với join, bắt buộc phải dùng tên bảng phía trc tên trường
+# INNER: hay dùng nhất, đảm bảo dữ liệu toàn vẹn nhất, bảng left = products, bảng right = categories
+# Check từng bản ghi trong bảng left, tìm tương ứng trong bảng right, nếu bảng right có trả về, ngược lại ko trả về
+SELECT products.*, categories.* FROM products
+INNER JOIN categories ON products.category_id = categories.id;
+
+# Select trường sử dụng AS để tránh trùng tên trường
+SELECT products.name AS product_name, categories.name AS category_name
+FROM products
+INNER JOIN categories ON products.category_id = categories.id;
+
+
+
+# LEFT: ít dùng: bảng left = products, bảng right = categories
+# Lấy toàn bộ bản ghi từ bảng left trước (chưa check bảng right vội), đi tìm trong bảng right, nếu có thì trả về, nếu ko có vẫn trả về nhưng
+# giá trị sẽ là null
+SELECT products.*, categories.* FROM products
+LEFT JOIN categories ON products.category_id = categories.id;
+
+# RIGHT: cực kỳ hiếm
+SELECT products.*, categories.* FROM products
+RIGHT JOIN categories ON products.category_id = categories.id;
+
+
+# giải lao 20h45
+
+
+
+
+
