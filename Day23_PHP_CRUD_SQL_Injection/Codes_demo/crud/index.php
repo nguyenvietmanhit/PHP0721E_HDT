@@ -21,9 +21,9 @@ $sql_select_all = "SELECT * FROM products ORDER BY created_at DESC";
 $obj_select_all = mysqli_query($connection, $sql_select_all);
 // B3: Lấy mảng kết hợp 2 chiều nhiều phần tử từ obj trên:
 $products = mysqli_fetch_all($obj_select_all, MYSQLI_ASSOC);
-echo "<pre>";
-print_r($products);
-echo "</pre>";
+//echo "<pre>";
+//print_r($products);
+//echo "</pre>";
 
 
 // Hiển thị session thành công và lỗi nếu có dưới dạng flash
@@ -42,8 +42,16 @@ if (isset($_SESSION['error'])) {
 <a href="create.php">Thêm mới sản phẩm</a>
 <h2>Danh sách sản phẩm</h2>
 
-<table border="1" cellspacing="0" cellpadding="8">
+<form method="get" action="delete_multiple.php">
+    <input type="submit" name="delete" value="Xóa nhiều bản ghi"
+           onclick="return confirm('Bạn có chắn chắn muốn xóa nhiều bản ghi')" />
+    <br />
+    <br />
+    <table border="1" cellspacing="0" cellpadding="8">
   <tr>
+    <th>
+        <input type="checkbox" id="check-all" title="Check/Uncheck All" />
+    </th>
     <th>ID</th>
     <th>Name</th>
     <th>Price</th>
@@ -54,6 +62,9 @@ if (isset($_SESSION['error'])) {
 
   <?php foreach ($products AS $product): ?>
     <tr>
+      <td>
+          <input type="checkbox" name="checks[]" class="checkbox-item" value="<?php echo $product['id']; ?>" />
+      </td>
       <td><?php echo $product['id']; ?></td>
       <td><?php echo $product['name']; ?></td>
       <td><?php echo number_format($product['price'], 0, '.', '.') ?> vnđ</td>
@@ -72,3 +83,24 @@ if (isset($_SESSION['error'])) {
   <?php endforeach; ?>
 
 </table>
+</form>
+<!-- crud/js/jquery-3.5.1.min.js -->
+<script src="js/jquery-3.5.1.min.js"></script>
+
+<script type="text/javascript">
+    // Đảm bảo code JS luôn chạy sau cùng, ko qtrong vị trí trước hay sau HTML
+    $(document).ready(function() {
+        // alert('hello jQuery');
+        // Với PHP thì nên tích hợp thư viện jQuery khi muốn thao tác với Javascript, cho đơn giản
+        // - Logic: Click vào checkbox check/uncheck all, thì sẽ check/uncheck all tương ứng các input của từng sản phẩm
+        var selectorCheckAll = $('#check-all');
+        selectorCheckAll.click(function() {
+           var isChecked = $(this).prop('checked'); // Ktra xem check all có đc đang đc check hay ko
+           if (isChecked) {
+               $('.checkbox-item').prop('checked', true);
+           } else {
+               $('.checkbox-item').prop('checked', false);
+           }
+        });
+    })
+</script>

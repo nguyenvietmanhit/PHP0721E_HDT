@@ -1,0 +1,54 @@
+<!--crud/list_ajax.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo Lấy danh sách sp sử dụng Ajax kết hợp PHP</title>
+</head>
+<body>
+
+  <a href="#" id="a-click">
+    Click để lấy danh sách sản phẩm
+  </a>
+
+  <div style="color: green" id="result">
+    Danh sách sản phẩm sẽ hiển thị tại đây
+  </div>
+
+<!--
+  Ajax là gì?
+  - Viết tắt Asynchronous Javascript and XML - là cơ chế của Javascript,
+  giúp thao tác với CSDL từ backend (PHP) mà ko cần tải lại trang, hoạt động theo kiểu bất đồng bộ
+  - Bất đồng độ là gì ? cơ chế chạy nhiều hành động cùng 1 lúc, còn PHP là cơ chế đồng bộ
+  - Ajax kết hợp với PHP để tạo ra hệ thống kiểu ko đồng bộ
+  - Nên sử dụng ajax của thư viện jQuery để thao tác cho dễ
+-->
+<script src="js/jquery-3.5.1.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+    $('#a-click').click(function() {
+      // Tạo 1 obj chứa thông tin về ajax
+      var obj_ajax = {
+        url: 'index.php', // url PHP nhận ajax gửi lên
+        method: 'get', //phương thức truyền dữ liệu,
+        data: { // dữ liệu gửi kèm từ ajax lên PHP
+          name: 'nvmanh',
+          age: 31
+        },
+        success: function(data) { // là nơi nhận kết quả trả về từ PHP
+          console.log(data);
+          // Hiển thị ra màn hình
+          $('#result').html(data);
+        }
+      };
+      // Gọi ajax dùng jQuery
+      $.ajax(obj_ajax);
+      // Cách debug ajax trên 1 trang web -> Inspect HTML -> Network, chỉ lọc các request của Ajax
+      // -> Fetch/XHR
+    })
+  });
+</script>
+
+</body>
+</html>
