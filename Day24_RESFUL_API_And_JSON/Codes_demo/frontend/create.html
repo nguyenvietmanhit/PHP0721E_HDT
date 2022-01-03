@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+    <script>
+        var obj = {
+            "name": "SS s7",
+            "price": 12345,
+            "description": "des ss"
+        };
+        // Chuyển từ obj của JS thành kiểu JSON r mới gửi lên API
+        obj = JSON.stringify(obj);
+        $.ajax({
+            url: 'http://localhost/PHP0721E_HDT/Day24_RESFUL_API_And_JSON/Codes_demo/backend/api.php',
+            method: 'POST',
+            data: obj,
+            success: function (data) {
+                console.log(data);
+            }
+        })
+    </script>
+</body>
+</html>
