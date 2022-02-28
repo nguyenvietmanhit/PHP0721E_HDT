@@ -5,12 +5,12 @@
  * - Chuẩn bị giao diện tĩnh cho cả frontend và backend
  * - Phân tích CSDL từ giao diện tĩnh: đi qua từng file .html, đi từ trên xuống
  * dưới để phân tích:
- * - Các thông tin mà thay đổi thường xuyên thì cần lưu vào CSDL -> quản trị
+ * + Các thông tin mà thay đổi thường xuyên thì cần lưu vào CSDL -> quản trị
  * thông tin này bằng giao diện backend thông qua CRUD
  * - Các thông tin ít khi thay đổi nên để fix cứng trong code -> giảm bớt
  * thời gian truy vấn trên trang
  * Demo 1 số bảng:
- * - Bảng menus: quản lý thông tin menu:
+ * + Bảng menus: quản lý thông tin menu:
  * id
  * name: tên menu
  * link: tên link gắn với từng menu
@@ -30,4 +30,6 @@
  * status
  * created_at
  * updated_at
+ * + Tạo cấu trúc file/thư mục MVC
+ * + Code khung MVC trước
  */

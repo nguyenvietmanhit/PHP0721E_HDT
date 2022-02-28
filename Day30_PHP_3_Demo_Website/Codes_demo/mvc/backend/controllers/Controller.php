@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: nvmanh
+ * Date: 3/13/2020
+ * Time: 11:02 PM
+ */
 
 class Controller
 {
@@ -6,6 +12,7 @@ class Controller
     public $content;
     //chứa nội dung lỗi validate
     public $error;
+
     // Tiêu đề trang
     public $page_title;
 
