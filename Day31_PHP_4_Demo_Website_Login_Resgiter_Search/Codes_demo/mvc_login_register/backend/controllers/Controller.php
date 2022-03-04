@@ -8,6 +8,28 @@
 
 class Controller
 {
+    // Phương thức khởi tạo
+    public function __construct() {
+        // Nếu chưa đăng nhập thì ko cho phép truy cập, loại trừ chức năng
+        // đăng nhập và đăng ký là 2 chức năng ko cần login vẫn truy cập đc
+        $controller = $_GET['controller'];
+        $action = $_GET['action'];
+        if (!isset($_SESSION['user'])
+            && $controller != 'user'
+            && !in_array($action, ['login', 'register'])) {
+            $_SESSION['error'] = 'Bạn chưa đăng nhập';
+            header('Location: index.php?controller=user&action=login');
+            exit();
+        }
+        // Nếu đăng nhập rồi thì ko cho truy cập trang login và register nữa
+        if (isset($_SESSION['user']) && $controller == 'user'
+            && in_array($action, ['login', 'register'])) {
+            $_SESSION['success'] = 'Bạn đã đăng nhập rồi, ko thể truy cập login/register';
+            header('Location: index.php?controller=product&action=index');
+            exit();
+        }
+    }
+
     //chứa nội dung view
     public $content;
     //chứa nội dung lỗi validate

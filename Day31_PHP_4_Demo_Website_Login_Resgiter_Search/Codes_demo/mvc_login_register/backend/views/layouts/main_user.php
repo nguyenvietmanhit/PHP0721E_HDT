@@ -20,6 +20,20 @@
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body>
+<h3 style="color: red">
+    <?php echo $this->error; ?>
+</h3>
+<?php
+if (isset($_SESSION['success'])) {
+    echo $_SESSION['success'];
+    unset($_SESSION['success']);
+}
+if (isset($_SESSION['error'])) {
+    echo $_SESSION['error'];
+    unset($_SESSION['error']);
+}
+?>
+
 <?php echo $this->content; ?>
 <!-- jQuery 3 -->
 <script src="assets/js/jquery.min.js"></script>
