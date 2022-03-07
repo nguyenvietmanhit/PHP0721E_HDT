@@ -12,8 +12,8 @@ class Controller
     public function __construct() {
         // Nếu chưa đăng nhập thì ko cho phép truy cập, loại trừ chức năng
         // đăng nhập và đăng ký là 2 chức năng ko cần login vẫn truy cập đc
-        $controller = $_GET['controller'];
-        $action = $_GET['action'];
+        $controller = isset($_GET['controller']) ? $_GET['controller'] : 'home';
+        $action = isset($_GET['action']) ? $_GET['action'] : 'index';
         if (!isset($_SESSION['user'])
             && $controller != 'user'
             && !in_array($action, ['login', 'register'])) {

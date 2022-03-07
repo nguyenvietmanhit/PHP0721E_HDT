@@ -8,8 +8,25 @@ class ProductController extends Controller
 {
   public function index()
   {
+    // Xử lý chức năng tìm kiếm:
+    echo '<pre>';
+    print_r($_GET);
+    echo '</pre>';
+    $str_search = '';
+    if (isset($_GET['title']) && !empty($_GET['title'])) {
+        $title = $_GET['title'];
+        $title = strtolower($title);
+        // Nối điều kiện AND vào chuỗi truy vấn, LIKE tốc độ chậm vì ko hỗ trợ
+        //cơ chế index như so sánh =
+        $str_search .= " AND products.title LIKE '%$title%'";
+    }
+    if (isset($_GET['price']) && !empty($_GET['price'])) {
+        $price = $_GET['price'];
+        $str_search .= " AND products.price = $price";
+    }
+
     $product_model = new Product();
-    $products = $product_model->getAll();
+    $products = $product_model->getAll($str_search);
 
     //lấy danh sách category đang có trên hệ thống để phục vụ cho search
     $category_model = new Category();
@@ -55,6 +72,7 @@ class ProductController extends Controller
           $this->error = 'File upload không được quá 2MB';
         }
       }
+
 
       //nếu ko có lỗi thì tiến hành save dữ liệu
       if (empty($this->error)) {

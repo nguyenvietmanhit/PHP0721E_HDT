@@ -2,6 +2,35 @@
 require_once 'helpers/Helper.php';
 ?>
 
+<h2>Form tìm kiếm</h2>
+<form method="get" action="">
+<!--  Với form GET, thì bắt buộc phải truyền lên tham số controller và action
+  thủ công-->
+    <input type="hidden" name="controller" value="product" />
+    <input type="hidden" name="action" value="index" />
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-12">
+            <label for="title">Tên sp</label>
+            <input type="text" name="title" id="title"
+                   value="<?php echo isset($_GET['title']) ? $_GET['title'] : '' ?>"
+                   class="form-control" />
+        </div>
+        <div class="col-md-6 col-sm-6 col-12">
+            <label for="price">Giá sp</label>
+            <input type="number" name="price" id="price"
+                   value="<?php echo isset($_GET['price']) ? $_GET['price'] : '' ?>"
+                   class="form-control" />
+        </div>
+    </div>
+    <br />
+    <br />
+    <input type="submit" name="search" value="Tìm kiếm" class="btn btn-success" />
+    <a href="index.php?controller=product&action=index" class="btn btn-default">
+        Xóa tìm kiếm
+    </a>
+</form>
+
+
 <h2>Danh sách sản phẩm</h2>
     <a href="index.php?controller=product&action=create" class="btn btn-success">
         <i class="fa fa-plus"></i> Thêm mới
