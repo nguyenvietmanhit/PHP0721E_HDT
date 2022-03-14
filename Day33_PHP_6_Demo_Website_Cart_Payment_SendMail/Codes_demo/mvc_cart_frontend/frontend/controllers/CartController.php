@@ -4,6 +4,32 @@ require_once 'models/Product.php';
 
 class CartController extends Controller
 {
+    public function index() {
+        // Xử lý Cập nhật lại giá:
+        echo '<pre>';
+        print_r($_POST);
+        echo '</pre>';
+        if (isset($_POST['submit'])) {
+            // Để ý trường hợp số lượng sản phẩm là số âm !
+
+
+            // Lặp mảng giỏ hàng để set lại số lượng mới cho từng sản phẩm trong giỏ
+            foreach ($_SESSION['cart'] AS $product_id => $cart) {
+                // - Xử lý check nếu số lượng là số âm, thì báo lỗi và ko thực hiện update quantity
+
+                $_SESSION['cart'][$product_id]['quantity'] = $_POST[$product_id];
+            }
+
+            $_SESSION['success'] = 'Cập nhật giỏ hàng thành công';
+        }
+
+
+        // Gọi view để hiển thị
+        $this->page_title = 'Giỏ hàng của bạn';
+        $this->content = $this->render('views/carts/index.php');
+        require_once 'views/layouts/main.php';
+    }
+
     public function add() {
         echo '<pre>';
         print_r($_GET);

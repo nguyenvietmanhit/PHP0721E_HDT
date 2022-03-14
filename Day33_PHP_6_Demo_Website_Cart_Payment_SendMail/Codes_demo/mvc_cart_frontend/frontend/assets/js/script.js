@@ -1,6 +1,7 @@
 //frontend/assets/js/script.js
 $(document).ready(function() {
     $('.add-to-cart').click(function() {
+        event.preventDefault();
         // Cần xóa cache trình duyệt để nhận code JS mới: Ctrl + Shift + R
         //    alert("Dsasd");
         // Lấy id sản phẩm hiện tại đang click
@@ -15,7 +16,7 @@ $(document).ready(function() {
             success: function(data) {
                 console.log(data)
                 // Hiển thị ra message
-                $('.ajax-message').html('Thêm sản phẩm vào giỏ thành công);
+                $('.ajax-message').html('Thêm sản phẩm vào giỏ thành công');
                 $('.ajax-message').addClass('ajax-message-active');
 
                 // Ẩn message sau 3 giây

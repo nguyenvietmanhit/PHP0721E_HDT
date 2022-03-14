@@ -1,0 +1,11 @@
+# File .htaccess
+# - Là 1 file ko có tên file
+# - Cấu hình chuyển hướng, trang, url thân thiện ...
+# - Tập trung cấu hình url thân thiện
+RewriteEngine On
+# Khai báo các rule theo kiểu map/ánh xạ giữa url thân thiện và url mvc
+RewriteRule gio-hang-cua-ban.html index.php?controller=cart&action=index
+
+# Url rewrite chứa tham số động, sử dụng biểu thức chính quy để mô tả tham số động
+# Vị trí của mỗi tham số động bắt đầu từ 1: $1, $2 ...
+RewriteRule san-pham/(.*)/([0-9]{1,}).html index.php?controller=product&action=detail&id=$2
