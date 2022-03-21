@@ -139,7 +139,7 @@ class LoginController
                   $is_update = $user_model->updateResetPasswordToken($user['id'], $reset_password_token);
                   if ($is_update) {
                       // - Gửi mail chứa link để reset password
-                      $url_reset_password = "index.php?controller=login&action=checkLinkReset&hash=$reset_password_token";
+                      $url_reset_password = "http://localhost/PHP0721E_HDT/Day34_PHP_7_Demo_Website_Payment_And_Demo_API/Codes_demo/mvc_cart_frontend/backend/index.php?controller=login&action=checkLinkReset&hash=$reset_password_token";
                       // - Viết hàm gửi mail:
                       // + Tạo thư mục mvc_cart_frontend/backend/libraries/
                       // + Copy thư mục PHPMailer từ buổi trước vào thư mục libraries trên
@@ -148,9 +148,9 @@ class LoginController
                       $to = $email;
                       $body = "Nhấn vào <a href='$url_reset_password'>đây</a> để thiết lập lại mật khẩu";
                       Helper::sendMail($subject, $to, $body);
-//                      $_SESSION['success'] = 'Vui lòng kiểm tra email để thiết lập lại mật khẩu';
-//                      header('Location: index.php?controller=login&action=resetPassword');
-//                      exit();
+                      $_SESSION['success'] = 'Vui lòng kiểm tra email để thiết lập lại mật khẩu';
+                      header('Location: index.php?controller=login&action=resetPassword');
+                      exit();
                   }
               }
           }
@@ -158,6 +158,56 @@ class LoginController
 
       // Gọi view để hiển thị
       $this->content = $this->render('views/users/reset_password.php');
+      require_once 'views/layouts/main_login.php';
+  }
+
+  public function checkLinkReset() {
+      // Xử lý submit form
+      echo '<pre>';
+      print_r($_POST);
+      echo '</pre>';
+      if (isset($_POST['submit'])) {
+          // index.php?controller=login&action=checkLinkReset&hash=eabdfe8eb1bbcbcc00c721d5b119b05
+          // - Lấy tham số hash từ Url trước:
+          $hash = $_GET['hash']; //
+          // Nếu mã hash rỗng là ko hợp lệ
+          if (empty($hash)) {
+              $_SESSION['error'] = 'Mã hash ko hợp lệ';
+              header('Location: index.php?controller=login&action=login');
+              exit();
+          }
+          // - Lấy ra user đang có mã hash tương ứng,chính là trường reset_password_token
+          $user_model = new User();
+          $user = $user_model->getUserByResetPasswordToken($hash);
+          if (empty($user)) {
+              $this->error = 'Không tìm thấy user nào ứng với mã hash';
+          } else {
+              $password = $_POST['password'];
+              $password_confirm = $_POST['password_confirm'];
+              // Validate:
+              if ($password != $password_confirm) {
+                  $this->error = 'Mật khẩu chưa trùng nhau';
+              }
+              if (empty($this->error)) {
+                  // - Cập nhật mật khẩu mới cho user tương ứng vừa lấy đc,
+                  // đồng thời cập nhật giá trị rỗng cho trường reset_password_token -> khi cập nhật
+                  //mật khẩu thành công thì link reset mật khẩu sẽ ko còn tác dụng
+                  // - Mật khẩu cần mã hóa trước khi update vào db, cơ chế mã hóa phải giống
+                  //với chức năng đăng ký user
+                  $password_hash = password_hash($password, PASSWORD_BCRYPT);
+                  $is_update = $user_model->updatePasswordReset($user['id'], $password_hash);
+                  if ($is_update) {
+                      $_SESSION['success'] = 'Đổi mật khẩu thành công';
+                      header('Location: index.php?controller=login&action=login');
+                      exit();
+                  }
+                  $this->error = 'Không thể đổi mật khẩu vì có lỗi gì đó';
+              }
+          }
+      }
+
+      // - Gọi view để hiển thị
+      $this->content = $this->render('views/users/check_link_reset.php');
       require_once 'views/layouts/main_login.php';
   }
 }

@@ -204,4 +204,26 @@ VALUES(:username, :password, :status)");
       // Đky 1 user với email=email của bạn
   }
 
+  public function getUserByResetPasswordToken($hash) {
+      $sql_select_one = "SELECT * FROM users WHERE reset_password_token=:reset_password_token";
+      $obj_select_one = $this->connection->prepare($sql_select_one);
+      $selects = [
+          ':reset_password_token' => $hash
+      ];
+      $obj_select_one->execute($selects);
+      $user = $obj_select_one->fetch(PDO::FETCH_ASSOC);
+      return $user;
+  }
+
+  public function updatePasswordReset($id, $password) {
+      $sql_update = "UPDATE users SET password=:password, reset_password_token='' WHERE id=:id";
+      $obj_update = $this->connection->prepare($sql_update);
+      $updates = [
+        ':password' => $password,
+        ':id' => $id
+      ];
+      $is_update = $obj_update->execute($updates);
+      return $is_update;
+  }
+
 }
