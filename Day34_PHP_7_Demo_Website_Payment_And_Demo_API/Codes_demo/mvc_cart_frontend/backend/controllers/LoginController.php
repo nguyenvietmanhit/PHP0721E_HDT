@@ -1,5 +1,6 @@
 <?php
 require_once 'models/User.php';
+require_once 'helpers/Helper.php';
 
 class LoginController
 {
@@ -112,5 +113,51 @@ class LoginController
 
     $this->content = $this->render('views/users/register.php');
     require_once 'views/layouts/main_login.php';
+  }
+
+  public function resetPassword() {
+      // Xử lý submit form
+      echo '<pre>';
+      print_r($_POST);
+      echo '</pre>';
+      if (isset($_POST['submit'])) {
+          $email = $_POST['username'];
+          if (empty($this->error)) {
+              // - Gửi link vào email của user, link này chính là url để reset mật khẩu
+              // -> ko truyền trực tiếp giá trị email lên url, mà cần mã hóa chuỗi email này
+              //vd: index.php?controller=login&action=checkLinkReset&hash=abc@gmail.com
+              //vd: index.php?controller=login&action=checkLinkReset&hash=fdafdsfdsfds321321321
+              // - Cần check xem email đã tồn tại với tài khoản nào chưa
+              $user_model = new User();
+              $user = $user_model->getUser($email);
+              if (empty($user)) {
+                  $this->error = 'Không tồn tại user nào gắn với email này';
+              } else {
+                  // - Tạo thêm 1 trường reset_password_token trong bảng users
+                  // - Update chuỗi mã hóa email vào trường reset_password_token, demo mã hóa email = md5
+                  $reset_password_token = md5($email); //
+                  $is_update = $user_model->updateResetPasswordToken($user['id'], $reset_password_token);
+                  if ($is_update) {
+                      // - Gửi mail chứa link để reset password
+                      $url_reset_password = "index.php?controller=login&action=checkLinkReset&hash=$reset_password_token";
+                      // - Viết hàm gửi mail:
+                      // + Tạo thư mục mvc_cart_frontend/backend/libraries/
+                      // + Copy thư mục PHPMailer từ buổi trước vào thư mục libraries trên
+                      // + Chú ý có 1 thư mục tên là helpers nằm ngay dưới backend
+                      $subject = 'Thông báo thiết lập lại mật khẩu';
+                      $to = $email;
+                      $body = "Nhấn vào <a href='$url_reset_password'>đây</a> để thiết lập lại mật khẩu";
+                      Helper::sendMail($subject, $to, $body);
+//                      $_SESSION['success'] = 'Vui lòng kiểm tra email để thiết lập lại mật khẩu';
+//                      header('Location: index.php?controller=login&action=resetPassword');
+//                      exit();
+                  }
+              }
+          }
+      }
+
+      // Gọi view để hiển thị
+      $this->content = $this->render('views/users/reset_password.php');
+      require_once 'views/layouts/main_login.php';
   }
 }

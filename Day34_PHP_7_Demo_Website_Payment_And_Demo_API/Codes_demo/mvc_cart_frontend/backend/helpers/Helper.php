@@ -1,16 +1,77 @@
 <?php
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
 /**
- * Created by PhpStorm.
- * User: nvmanh
- * Date: 5/2/2020
- * Time: 10:14 AM
+ * Chứa các phương thức tĩnh để xử lý nghiệp vụ của riêng bạn (ko liên quan đến MVC)
  */
+// - Nhúng thủ công 3 class sau theo đúng thứ tự:
+require_once 'libraries/PHPMailer/src/PHPMailer.php';
+require_once 'libraries/PHPMailer/src/SMTP.php';
+require_once 'libraries/PHPMailer/src/Exception.php';
+
 class Helper
 {
     const STATUS_ACTIVE = 1;
     const STATUS_DISABLED = 0;
     const STATUS_ACTIVE_TEXT = 'Active';
     const STATUS_DISABLED_TEXT = 'Disabled';
+
+    /**
+     * @param $subject string Tiêu đề mail
+     * @param $to string Email gửi tới
+     * @param $body string Nội dung email
+     */
+    public static function sendMail($subject, $to, $body) {
+
+
+//Load Composer's autoloader
+// require 'vendor/autoload.php'; // do ko dùng composer nên đường dẫn này sẽ ko tồn tại
+
+//Create an instance; passing `true` enables exceptions
+        $mail = new PHPMailer(true);
+// Nghỉ giải lao 10p: 20h05
+
+        try {
+            //Server settings
+            // Cấu hình gửi mail có dấu:
+            $mail->CharSet = 'UTF8';
+            $mail->SMTPDebug = SMTP::DEBUG_OFF;                      //Enable verbose debug output
+            $mail->isSMTP();                                            //Send using SMTP
+            $mail->Host = 'smtp.gmail.com';                     //Set the SMTP server to send through, dùng host của Gmail
+            $mail->SMTPAuth = true;                                   //Enable SMTP authentication
+            $mail->Username = 'nguyenvietmanhit@gmail.com';                     //SMTP username = tài khoản mail cá nhân của bạn
+            $mail->Password = 'cccchytzjjsybgif';                               //SMTP password, ko phải là mật khẩu đăng nhập của Gmail,
+            // phải dùng mật khẩu ứng dụng -> tạo mật khẩu ứng dụng
+
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+            $mail->Port = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+            //Recipients
+            $mail->setFrom('nguyenvietmanhit@gmail.com', 'From manhnv');
+            //$mail->addAddress('joe@example.net', 'Joe User');     //Add a recipient
+            $mail->addAddress($to);               //Name is optional
+            //$mail->addReplyTo('info@example.com', 'Information');
+            //$mail->addCC('cc@example.com');
+            //$mail->addBCC('bcc@example.com');
+
+            //Attachments
+            // Copy 1 file ảnh bất kỳ cùng cấp với file hiện tại
+            //$mail->addAttachment('itplus.jpg');         //Add attachments
+            //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+
+            //Content
+            $mail->isHTML(true);                                  //Set email format to HTML
+            $mail->Subject = $subject;
+            $mail->Body = $body;
+            $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+            $mail->send();
+            echo 'Message has been sent';
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
+    }
 
     /**
      * Get status text
@@ -31,6 +92,7 @@ class Helper
     }
 
   public static function getSlug($str) {
+        // Tôi là mạnh -> toi-la-manh
     $str = trim(mb_strtolower($str));
     $str = preg_replace('/(à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ)/', 'a', $str);
     $str = preg_replace('/(è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ)/', 'e', $str);

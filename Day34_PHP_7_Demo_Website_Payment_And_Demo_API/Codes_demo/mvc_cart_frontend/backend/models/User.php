@@ -192,4 +192,16 @@ VALUES(:username, :password, :status)");
     return $obj_insert->execute($arr_insert);
   }
 
+  public function updateResetPasswordToken($id, $reset_password_token) {
+      $sql_update = "UPDATE users SET reset_password_token=:reset_password_token WHERE id=:id";
+      $obj_update = $this->connection->prepare($sql_update);
+      $updates = [
+          ':reset_password_token' => $reset_password_token,
+          ':id' => $id
+      ];
+      $is_update = $obj_update->execute($updates);
+      return $is_update;
+      // Đky 1 user với email=email của bạn
+  }
+
 }

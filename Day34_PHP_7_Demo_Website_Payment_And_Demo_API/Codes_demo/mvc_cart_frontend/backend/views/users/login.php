@@ -14,6 +14,9 @@
             <p>
                 Chưa có tài khoản, <a href="index.php?controller=login&action=register">Đăng ký</a> ngay
             </p>
+            <p>
+                Click vào <a href="index.php?controller=login&action=resetPassword">đây</a> nếu quên mật khẩu
+            </p>
         </div>
     </form>
 </div>
