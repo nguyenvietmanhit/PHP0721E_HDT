@@ -20,7 +20,7 @@ class UserController extends Controller {
             'page' => $page,
             'query_additional' => $query_additional
         ];
-        $pagination = new Pagination($params);
+        $pagination = new PaginationTest($params);
         $pages = $pagination->getPagination();
         $users = $user_model->getAllPagination($params);
 

@@ -31,7 +31,7 @@ class ProductController extends Controller
         'page' => isset($_GET['page']) ? $_GET['page'] : 1
     ];
     $products = $product_model->getAllPagination($arr_params);
-    $pagination = new Pagination($arr_params);
+    $pagination = new PaginationTest($arr_params);
 
     $pages = $pagination->getPagination();
 

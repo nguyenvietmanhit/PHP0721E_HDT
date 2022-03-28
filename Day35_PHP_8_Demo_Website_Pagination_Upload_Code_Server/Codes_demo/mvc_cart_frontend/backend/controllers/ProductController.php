@@ -3,19 +3,27 @@ require_once 'controllers/Controller.php';
 require_once 'models/Product.php';
 require_once 'models/Category.php';
 require_once 'models/Pagination.php';
+require_once 'helpers/PaginationTest.php';
 
 class ProductController extends Controller
 {
   public function index()
   {
     $product_model = new Product();
-
-
     $products = $product_model->getAll();
-
     //lấy danh sách category đang có trên hệ thống để phục vụ cho search
     $category_model = new Category();
     $categories = $category_model->getAll();
+
+    // Test cấu trúc phân trang
+    $params = [
+        'total' => $product_model->countTotal(),
+        'limit' => 2
+    ];
+    $pagination_test = new PaginationTest($params);
+    $pages = $pagination_test->getPagination();
+    echo $pages;
+
 
     $this->content = $this->render('views/products/index.php', [
         'products' => $products,
