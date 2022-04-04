@@ -56,3 +56,4 @@ require_once 'helpers/Helper.php';
         </tr>
     <?php endif; ?>
 </table>
+<?php echo $pages; ?>

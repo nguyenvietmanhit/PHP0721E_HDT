@@ -35,7 +35,7 @@ class CategoryController extends Controller
 
     //gán biến name cho mảng params với key là name
     $params['page'] = $page;
-    $pagination = new PaginationTest($params);
+    $pagination = new Pagination($params);
     //lấy ra html phân trang
     $pages = $pagination->getPagination();
 

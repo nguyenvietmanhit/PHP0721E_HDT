@@ -38,13 +38,14 @@ class Product extends Model
      * Lấy thông tin của sản phẩm đang có trên hệ thống
      * @return array
      */
-    public function getAll()
+    public function getAll($str_pagination = '')
     {
         $obj_select = $this->connection
             ->prepare("SELECT products.*, categories.name AS category_name FROM products 
                         INNER JOIN categories ON categories.id = products.category_id
                         WHERE TRUE $this->str_search
                         ORDER BY products.created_at DESC
+						$str_pagination
                         ");
 
         $arr_select = [];

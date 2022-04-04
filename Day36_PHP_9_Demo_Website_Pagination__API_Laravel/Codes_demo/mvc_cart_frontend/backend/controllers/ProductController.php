@@ -9,25 +9,45 @@ class ProductController extends Controller
 {
   public function index()
   {
+	//# SELECT * FROM <tên-bảng> LIMIT start, limit;
     $product_model = new Product();
-    $products = $product_model->getAll();
+	$str_pagination = '';
+	// Xác định start và limit dựa vào url
+	$limit = 2;
+	// Cần phải lấy đc trang hiện tại thì mới xác định đc start
+	$page = 1;
+	// index.php?controller=product&action=index&page=4
+	if (isset($_GET['page'])) {
+		$page = $_GET['page'];
+	}
+	// Trang 1 thì start = 0, lấy 2 bản ghi từ 0 đến 1
+	// Trang 2 thì start = 2, lấy 2 bản ghi từ 2 đến 3
+	// Trang 3 thì start = 4, lấy 2 bản ghi từ 4 đến 5
+	$start = ($page - 1) * $limit;
+	$str_pagination = " LIMIT $start,$limit";
+
+	var_dump($str_pagination);
+    $products = $product_model->getAll($str_pagination);
     //lấy danh sách category đang có trên hệ thống để phục vụ cho search
     $category_model = new Category();
     $categories = $category_model->getAll();
 
+
+
     // Test cấu trúc phân trang
     $params = [
-        'total' => $product_model->countTotal(),
-        'limit' => 2
+        'total' => $product_model->countTotal(), //6
+        'limit' => 2 //số bản ghi hiển thị trên 1 trang
     ];
     $pagination_test = new PaginationTest($params);
     $pages = $pagination_test->getPagination();
-    echo $pages;
+    // echo $pages;
 
 
     $this->content = $this->render('views/products/index.php', [
         'products' => $products,
         'categories' => $categories,
+		'pages' => $pages
     ]);
     require_once 'views/layouts/main.php';
   }
